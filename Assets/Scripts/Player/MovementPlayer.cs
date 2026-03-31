@@ -16,8 +16,12 @@ public class MovementPlayer : MonoBehaviour
     List<Vector2> inputBuffer = new List<Vector2>();
     const int MAX_INPUT_BUFFER_SIZE = 4;
 
+    // Audio
+    private SnakeAudio snakeAudio;
+
     void Start()
     {
+        snakeAudio = GetComponent<SnakeAudio>();
     }
 
     public void ResetMovement(Vector2 _pos)
@@ -67,9 +71,7 @@ public class MovementPlayer : MonoBehaviour
             {
                 if (CheckAppleNextPosition(pos + lastDirection) && bodySnake != null)
                 {
-                    globalMapData.RemoveAppleAtPosition(pos + lastDirection);
-                    bodySnake.IncreaseLengthSnake();
-                    ScoreManager.instance.AddScore(50);
+                    EatApple();
                 }
                 SetPosition(pos + lastDirection);
             } else
@@ -77,6 +79,17 @@ public class MovementPlayer : MonoBehaviour
                 GameManager.instance.GameOver();
             }
             timer = 0f;
+        }
+    }
+
+    void EatApple()
+    {
+        globalMapData.RemoveAppleAtPosition(pos + lastDirection);
+        bodySnake.IncreaseLengthSnake();
+        ScoreManager.instance.AddScore(50);
+        if (snakeAudio != null)
+        {
+            snakeAudio.PlayAppleEatSound();
         }
     }
 
