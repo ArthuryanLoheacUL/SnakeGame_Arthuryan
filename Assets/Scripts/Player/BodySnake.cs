@@ -66,12 +66,13 @@ public class BodySnake : MonoBehaviour
 
     private float impactWhiteDuration = 0.0f;
     private Shader shaderGUItext;
-    private Shader shaderSpritesDefault;
+
+    public GameObject trailSmoke;
+
 
     public void ResetSnake()
     {
         shaderGUItext = Shader.Find("GUI/Text Shader");
-        shaderSpritesDefault = Shader.Find("Sprites/Default");
 
         lengthSnake = startLengthSnake;
         positions.Clear();
@@ -93,6 +94,11 @@ public class BodySnake : MonoBehaviour
             positions.RemoveAt(0);
         }
         RefreshSnakeBody();
+        if (trailSmoke != null)
+        {
+            trailSmoke.transform.position = new Vector3(positions[0].position.x, positions[0].position.y, 0);
+            trailSmoke.transform.rotation = Quaternion.LookRotation(Vector3.back, positions[0].direction);
+        }
     }
 
     void RefreshSnakeBody()

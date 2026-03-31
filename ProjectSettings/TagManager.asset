@@ -44,6 +44,9 @@ TagManager:
   - name: BackgroundTile
     uniqueID: 4192882835
     locked: 0
+  - name: TrailSnake
+    uniqueID: 230594673
+    locked: 0
   - name: Player
     uniqueID: 1786327631
     locked: 0
