@@ -17,6 +17,25 @@ public struct SnakeSprite
 }
 
 [System.Serializable]
+public struct HeadSnakePart
+{
+    public Sprite basic;
+    public Sprite[] eating;
+    public Sprite[] dead;
+}
+
+[System.Serializable]
+public struct HeadSnake
+{
+    public HeadSnakePart left;
+    public HeadSnakePart right;
+    public HeadSnakePart up;
+    public HeadSnakePart down;
+    public float frameDurationEating;
+    public float frameDurationDead;
+}
+
+[System.Serializable]
 public struct SnakeSpriteBody
 {
     public Sprite vertical;
@@ -35,8 +54,14 @@ public class BodySnake : MonoBehaviour
     private List<GameObject> bodyParts = new List<GameObject>();
 
     public SnakeSpriteBody bodySprite;
-    public SnakeSprite headSprite;
+    public HeadSnake headSprite;
     public SnakeSprite tailSprite;
+
+    private float headAnimationTimer;
+    private int currentHeadFrame;
+
+    public enum HeadState { Basic, Eating, Dead }
+    public HeadState currentHeadState = HeadState.Basic;
 
     public void ResetSnake()
     {
@@ -119,7 +144,7 @@ public class BodySnake : MonoBehaviour
     Sprite GetSprite(int _index, Vector2 _direction, List<Position> _positions = null)
     {
         if (_index == positions.Count - 1)
-            return GetSpriteFromDirection(headSprite, _direction);
+            return GetSpriteFromHead(_direction);
         else if (_index == 0)
             return GetSpriteFromDirection(tailSprite, _positions[1].direction);
         return GetSpriteForBody(_positions[_index], _positions[_index - 1], _positions[_index + 1]);
@@ -140,5 +165,65 @@ public class BodySnake : MonoBehaviour
             }
         }
         return false;
+    }
+
+    void Update()
+    {
+        // Update the head sprite based on the current direction
+        headAnimationTimer += Time.deltaTime;
+        if (headAnimationTimer >= headSprite.frameDurationEating && currentHeadState == HeadState.Eating ||
+            headAnimationTimer >= headSprite.frameDurationDead && currentHeadState == HeadState.Dead)
+        {
+            headAnimationTimer = 0f;
+            currentHeadFrame++;
+            RefreshSnakeBody();
+        }
+    }
+
+    Sprite GetSpriteFromHead(Vector2 _direction)
+    {
+        switch (_direction.x, _direction.y)
+        {
+            case (0, 1):
+                return GetSpriteFromHeadDirection(headSprite.up);
+            case (0, -1):
+                return GetSpriteFromHeadDirection(headSprite.down);
+            case (-1, 0):
+                return GetSpriteFromHeadDirection(headSprite.left);
+            case (1, 0):
+                return GetSpriteFromHeadDirection(headSprite.right);
+            default:
+                return null;
+        }
+    }
+
+    Sprite GetSpriteFromHeadDirection(HeadSnakePart _snakePart)
+    {
+        switch (currentHeadState)
+        {
+            case HeadState.Basic:
+                return _snakePart.basic;
+            case HeadState.Eating:
+                if (currentHeadFrame >= _snakePart.eating.Length)
+                {
+                    SetHeadState(HeadState.Basic);
+                    return _snakePart.basic;
+                }
+                return _snakePart.eating[currentHeadFrame];
+            case HeadState.Dead:
+                if (currentHeadFrame >= _snakePart.dead.Length)
+                {
+                    currentHeadFrame = 0;
+                }
+                return _snakePart.dead[currentHeadFrame];
+            default:
+                return _snakePart.basic;
+        }
+    }
+
+    public void SetHeadState(HeadState _state)
+    {
+        currentHeadState = _state;
+        currentHeadFrame = 0;
     }
 }

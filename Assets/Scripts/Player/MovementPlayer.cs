@@ -99,12 +99,20 @@ public class MovementPlayer : MonoBehaviour
         }
         GameManager.instance.GameOver();
         ShakeCameraManager.instance.ShakeCamera(0.15f, 0.15f, lastDirection);
+        if (bodySnake != null)
+        {
+            bodySnake.SetHeadState(BodySnake.HeadState.Dead);
+        }
     }
 
     void EatApple()
     {
         globalMapData.RemoveAppleAtPosition(pos + lastDirection);
-        bodySnake.IncreaseLengthSnake();
+        if (bodySnake != null)
+        {
+            bodySnake.IncreaseLengthSnake();
+            bodySnake.SetHeadState(BodySnake.HeadState.Eating);
+        }
         ScoreManager.instance.AddScore(50);
         if (snakeAudio != null)
         {
