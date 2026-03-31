@@ -12,14 +12,18 @@ public class GameManager : MonoBehaviour
     private MapAppleGenerator mapAppleGenerator;
 
     public GameObject playerPrefab;
+    private GameObject player;
+
     public GameObject camera;
 
     [HideInInspector]
     public bool isGameOver = false;
     public GameObject gameOverUI;
+    public int targetScore = 200;
+    [Header("Audio Clips")]
     public SoundEffectManager.SnakeAudioClip gameOverAudioClip;
+    public SoundEffectManager.SnakeAudioClip winAudioClip;
 
-    private GameObject player;
 
     void Awake()
     {
@@ -123,9 +127,23 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (isGameOver)
+            return;
         isGameOver = true;
+        bool _isWin = ScoreManager.instance.GetScore() >= targetScore;
+
         if (gameOverUI != null)
+        {
+            GameOverScreen _gameOverScreen = gameOverUI.GetComponent<GameOverScreen>();
+            if (_gameOverScreen != null)
+            {
+                _gameOverScreen.ShowGameOverScreen(_isWin);
+            }
             gameOverUI.SetActive(true);
-        SoundEffectManager.instance.PlayAudioSourceSetPitch(gameOverAudioClip);
+        }
+        if (!_isWin)
+            SoundEffectManager.instance.PlayAudioSourceSetPitch(gameOverAudioClip);
+        else
+            SoundEffectManager.instance.PlayAudioSourceSetPitch(winAudioClip);
     }
 }
