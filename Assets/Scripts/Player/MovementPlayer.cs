@@ -101,7 +101,7 @@ public class MovementPlayer : MonoBehaviour
         ShakeCameraManager.instance.ShakeCamera(0.15f, 0.15f, lastDirection);
         if (bodySnake != null)
         {
-            bodySnake.SetHeadState(BodySnake.HeadState.Dead);
+            bodySnake.ImpactWall();
         }
     }
 

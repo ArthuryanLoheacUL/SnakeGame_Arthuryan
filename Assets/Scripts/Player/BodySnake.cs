@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 struct Position
 {
@@ -63,8 +64,15 @@ public class BodySnake : MonoBehaviour
     public enum HeadState { Basic, Eating, Dead }
     public HeadState currentHeadState = HeadState.Basic;
 
+    private float impactWhiteDuration = 0.0f;
+    private Shader shaderGUItext;
+    private Shader shaderSpritesDefault;
+
     public void ResetSnake()
     {
+        shaderGUItext = Shader.Find("GUI/Text Shader");
+        shaderSpritesDefault = Shader.Find("Sprites/Default");
+
         lengthSnake = startLengthSnake;
         positions.Clear();
         foreach (GameObject _bodyPart in bodyParts)
@@ -94,6 +102,7 @@ public class BodySnake : MonoBehaviour
             Destroy(_bodyPart);
         }
         int _index = 0;
+
         foreach (Position _position in positions)
         {
             GameObject _bodyPart = new GameObject("BodyPart");
@@ -101,6 +110,11 @@ public class BodySnake : MonoBehaviour
             SpriteRenderer _renderer = _bodyPart.AddComponent<SpriteRenderer>();
             _renderer.sprite = GetSprite(_index, _position.direction, positions);
             _renderer.sortingLayerName = "Player";
+            if (impactWhiteDuration > 0)
+            {
+                _renderer.material.shader = shaderGUItext;
+                _renderer.color = Color.white;
+            }
             _bodyPart.transform.parent = transform;
             bodyParts.Add(_bodyPart);
             _index++;
@@ -178,6 +192,15 @@ public class BodySnake : MonoBehaviour
             currentHeadFrame++;
             RefreshSnakeBody();
         }
+
+        if (impactWhiteDuration > 0)
+        {
+            impactWhiteDuration -= Time.deltaTime;
+            if (impactWhiteDuration <= 0)
+            {
+                impactWhiteDuration = 0;
+            }
+        }
     }
 
     Sprite GetSpriteFromHead(Vector2 _direction)
@@ -225,5 +248,11 @@ public class BodySnake : MonoBehaviour
     {
         currentHeadState = _state;
         currentHeadFrame = 0;
+    }
+
+    public void ImpactWall()
+    {
+        SetHeadState(HeadState.Dead);
+        impactWhiteDuration = 0.12f;
     }
 }
