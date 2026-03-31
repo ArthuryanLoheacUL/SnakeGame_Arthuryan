@@ -69,6 +69,7 @@ public class MovementPlayer : MonoBehaviour
                 {
                     globalMapData.RemoveAppleAtPosition(pos + lastDirection);
                     bodySnake.IncreaseLengthSnake();
+                    ScoreManager.instance.AddScore(50);
                 }
                 SetPosition(pos + lastDirection);
             } else
