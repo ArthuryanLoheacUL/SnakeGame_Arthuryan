@@ -12,13 +12,26 @@ public class MapAppleGenerator : MonoBehaviour
     public void GenerateNewApplesMap()
     {
         globalMapData = GetComponent<GlobalMapData>();
-        apples = new List<GameObject>();
         if (globalMapData == null)
         {
             Debug.LogError("GlobalMapData component not found on the same GameObject. Please add a GlobalMapData component.");
             return;
         }
+        DestroyApples();
+        apples = new List<GameObject>();
         GenerateApplesMap();
+    }
+
+    void DestroyApples()
+    {
+        if (apples != null)
+        {
+            foreach (GameObject _tile in apples)
+            {
+                Destroy(_tile);
+            }
+            apples.Clear();
+        }
     }
 
     // Update is called once per frame

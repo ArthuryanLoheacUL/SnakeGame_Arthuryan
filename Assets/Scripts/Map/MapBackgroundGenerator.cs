@@ -18,7 +18,23 @@ public class MapBackgroundGenerator : MonoBehaviour
             Debug.LogError("GlobalMapData component not found on the same GameObject. Please add a GlobalMapData component.");
             return;
         }
+        DestroyMap();
         GenerateBackgroundMap();
+    }
+
+    void DestroyMap()
+    {
+        if (mapTilesBackground != null)
+        {
+            foreach (List<GameObject> _row in mapTilesBackground)
+            {
+                foreach (GameObject _tile in _row)
+                {
+                    Destroy(_tile);
+                }
+            }
+            mapTilesBackground.Clear();
+        }
     }
 
     // Generates the map by creating tile GameObjects and assigning them random sprites

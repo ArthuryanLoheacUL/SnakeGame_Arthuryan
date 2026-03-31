@@ -16,6 +16,7 @@ public class MapObstaclesGenerator : MonoBehaviour
             Debug.LogError("GlobalMapData component not found on the same GameObject. Please add a GlobalMapData component.");
             return;
         }
+        DestroyObstaclesMap();
         GenerateObstaclesMap();
     }
 
@@ -23,6 +24,18 @@ public class MapObstaclesGenerator : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void DestroyObstaclesMap()
+    {
+        if (mapTilesObstacles != null)
+        {
+            foreach (GameObject _tile in mapTilesObstacles)
+            {
+                Destroy(_tile);
+            }
+            mapTilesObstacles.Clear();
+        }
     }
 
     void GenerateObstaclesMap()

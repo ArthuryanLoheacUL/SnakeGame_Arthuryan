@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     public GameObject gameOverUI;
 
+    private GameObject player;
+
     void Awake()
     {
         if (instance == null)
@@ -34,9 +36,6 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (gameOverUI != null)
-            gameOverUI.SetActive(false);
-
         if (mapGenerator == null)
         {
             Debug.LogError("Map Generator GameObject is not assigned. Please assign a GameObject with MapObstaclesGenerator and MapBackgroundGenerator components.");
@@ -46,11 +45,23 @@ public class GameManager : MonoBehaviour
         mapObstaclesGenerator = mapGenerator.GetComponent<MapObstaclesGenerator>();
         mapAppleGenerator = mapGenerator.GetComponent<MapAppleGenerator>();
         globalMapData = mapGenerator.GetComponent<GlobalMapData>();
+        RestartGame();
+    }
+
+    public void RestartGame()
+    {
+        isGameOver = false;
+        if (gameOverUI != null)
+            gameOverUI.SetActive(false);
         GenerateMaps();
-        GameObject _player = CreatePlayerOnTheMap();
-        if (_player != null)
+        if (player != null)
         {
-            SetPositionPlayer(_player);
+            Destroy(player);
+        }
+        player = CreatePlayerOnTheMap();
+        if (player != null)
+        {
+            SetPositionPlayer(player);
         }
         if (camera != null)
         {
