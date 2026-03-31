@@ -16,9 +16,11 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private TMP_Text highScoreText;
     private int highScore = 0;
+    private bool highScoreReached = false;
 
     public AudioClip scoreSoundEffect;
     public AudioClip targetReached;
+    public AudioClip highScoreSoundEffect;
 
     void Awake()
     {
@@ -36,6 +38,13 @@ public class ScoreManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (PlayerPrefs.HasKey("highscore"))
+        {
+            SetHighScore(PlayerPrefs.GetInt("highscore"));
+        } else
+        {
+            SetHighScore(0);
+        }
         ResetScore();
     }
 
@@ -48,6 +57,16 @@ public class ScoreManager : MonoBehaviour
             SoundEffectManager.instance.PlayAudioSourceRandomPitched(targetReached, 0.5f, 0);
             targetScoreReached = true;
         }
+        if (score > highScore)
+        {
+            PlayerPrefs.SetInt("highscore", score);
+            SetHighScore(score);
+            if (!highScoreReached)
+            {
+                SoundEffectManager.instance.PlayAudioSourceRandomPitched(highScoreSoundEffect, 0.75f, 0);
+                highScoreReached = true;
+            }
+        }
     }
 
     public int GetScore()
@@ -59,6 +78,7 @@ public class ScoreManager : MonoBehaviour
     {
         SetScore(0);
         targetScoreReached = false;
+        highScoreReached = false;
     }
 
     public void SetTargetScore(int _targetScore)

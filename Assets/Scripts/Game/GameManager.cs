@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
         }
         ScoreManager.instance.ResetScore();
         ScoreManager.instance.SetTargetScore(targetScore);
-        ScoreManager.instance.SetHighScore(9999);
     }
 
 
