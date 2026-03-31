@@ -14,6 +14,7 @@ public class MovementPlayer : MonoBehaviour
     GlobalMapData globalMapData;
 
     List<Vector2> inputBuffer = new List<Vector2>();
+    const int maxInputBufferSize = 4;
 
     void Start()
     {
@@ -117,12 +118,11 @@ public class MovementPlayer : MonoBehaviour
         {
             _newTargetDirection = new Vector2(0, (_input.y > 0) ? 1 : -1);
         }
-        if (_newTargetDirection != Vector2.zero && _newTargetDirection != -lastDirection)
+        if (_newTargetDirection != Vector2.zero)
         {
-            if (inputBuffer.Count < 2)
-            {
+            if (inputBuffer.Count == 0 || inputBuffer[inputBuffer.Count - 1] != _newTargetDirection.normalized
+                && inputBuffer.Count < maxInputBufferSize)
                 inputBuffer.Add(_newTargetDirection.normalized);
-            }
         }
     }
 
