@@ -7,6 +7,8 @@ public class ScoreManager : MonoBehaviour
     private int score = 0;
     public TMP_Text scoreText;
 
+    public AudioClip scoreSoundEffect;
+
     void Awake()
     {
         if (instance == null)
@@ -29,6 +31,7 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int _points)
     {
         SetScore(score + _points);
+        SoundEffectManager.instance.PlayAudioSourcePitched(scoreSoundEffect, 0.5f, 0.1f);
     }
 
     public int GetScore()
