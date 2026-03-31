@@ -19,7 +19,7 @@ public class MapAppleGenerator : MonoBehaviour
         }
         DestroyApples();
         apples = new List<GameObject>();
-        GenerateApplesMap();
+        GenerateApplesMap(true);
     }
 
     void DestroyApples()
@@ -39,14 +39,14 @@ public class MapAppleGenerator : MonoBehaviour
     {
         if (apples.Count < maxApples)
         {
-            GenerateApplesMap();
+            GenerateApplesMap(false);
         }
     }
 
-    void GenerateApplesMap()
+    void GenerateApplesMap(bool _firstApples)
     {
         BodySnake _bodySnake = FindAnyObjectByType<BodySnake>();
-        List<Vector2> _availablePositions = GetAvailablePositions(_bodySnake);
+        List<Vector2> _availablePositions = GetAvailablePositions(_bodySnake, _firstApples);
 
         for (int _i = apples.Count; _i < maxApples; _i++)
         {
@@ -63,13 +63,18 @@ public class MapAppleGenerator : MonoBehaviour
         }
     }
 
-    List<Vector2> GetAvailablePositions(BodySnake _bodySnake)
+    List<Vector2> GetAvailablePositions(BodySnake _bodySnake, bool _firstApples)
     {
         List<Vector2> _availablePositions = new List<Vector2>();
         for (int _i = 0; _i < globalMapData.mapSize.x; _i++)
         {
             for (int _j = 0; _j < globalMapData.mapSize.y; _j++)
             {
+                if (_firstApples && _j == globalMapData.mapSize.y / 2)
+                {
+                    continue; // Skip the middle row for the first apple generation to ensure no immediate collision with the snake's starting position
+                }
+
                 Vector2 _position = globalMapData.GetTilePosition(_i, _j);
                 bool _isOnSnake = _bodySnake != null && _bodySnake.IsPositionOnSnake(_position);
                 if (!IsAppleTileAtPosition(_position) && !globalMapData.IsObstacleTileAtPosition(_position) && !_isOnSnake)

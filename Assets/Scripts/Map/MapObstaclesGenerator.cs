@@ -71,6 +71,10 @@ public class MapObstaclesGenerator : MonoBehaviour
         {
             for (int _j = 0; _j < globalMapData.mapSize.y; _j++)
             {
+                if (_j == globalMapData.mapSize.y / 2)
+                {
+                    continue; // Skip the middle row to ensure a clear path for the snake
+                }
                 _availableSpaces.Add(new Vector2(_i, _j));
             }
         }

@@ -27,14 +27,11 @@ public class MovementPlayer : MonoBehaviour
     public void ResetMovement(Vector2 _pos)
     {
         bodySnake = GetComponent<BodySnake>();
-        int _dir = Random.Range(0, 4);
+        int _dir = Random.Range(0, 2);
         lastDirection = _dir switch
         {
             0 => Vector2.right,
-            1 => Vector2.left,
-            2 => Vector2.up,
-            3 => Vector2.down,
-            _ => Vector2.right
+            _ => Vector2.left
         };
 
 
