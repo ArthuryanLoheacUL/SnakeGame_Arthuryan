@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
         ScoreManager.instance.ResetScore();
     }
 
+
     void GenerateMaps()
     {
         if (globalMapData == null)
