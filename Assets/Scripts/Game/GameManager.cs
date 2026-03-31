@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    static public GameManager instance;
+
     // Reference to the GameObject that contains all the map generation components
     public GameObject mapGenerator;
     private GlobalMapData globalMapData;
@@ -12,9 +14,29 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject camera;
 
+    [HideInInspector]
+    public bool isGameOver = false;
+    public GameObject gameOverUI;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (gameOverUI != null)
+            gameOverUI.SetActive(false);
+
         if (mapGenerator == null)
         {
             Debug.LogError("Map Generator GameObject is not assigned. Please assign a GameObject with MapObstaclesGenerator and MapBackgroundGenerator components.");
@@ -83,5 +105,12 @@ public class GameManager : MonoBehaviour
         }
         _movementPlayer.ResetMovement(_player.transform.position);
         _movementPlayer.SetGlobalMapData(globalMapData);
+    }
+
+    public void GameOver()
+    {
+        isGameOver = true;
+        if (gameOverUI != null)
+            gameOverUI.SetActive(true);
     }
 }

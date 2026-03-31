@@ -14,7 +14,7 @@ public class MovementPlayer : MonoBehaviour
     GlobalMapData globalMapData;
 
     List<Vector2> inputBuffer = new List<Vector2>();
-    const int maxInputBufferSize = 4;
+    const int MAX_INPUT_BUFFER_SIZE = 4;
 
     void Start()
     {
@@ -47,6 +47,8 @@ public class MovementPlayer : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.isGameOver)
+            return;
         UpdateMovement();
     }
 
@@ -69,6 +71,9 @@ public class MovementPlayer : MonoBehaviour
                     bodySnake.IncreaseLengthSnake();
                 }
                 SetPosition(pos + lastDirection);
+            } else
+            {
+                GameManager.instance.GameOver();
             }
             timer = 0f;
         }
@@ -121,19 +126,8 @@ public class MovementPlayer : MonoBehaviour
         if (_newTargetDirection != Vector2.zero)
         {
             if (inputBuffer.Count == 0 || inputBuffer[inputBuffer.Count - 1] != _newTargetDirection.normalized
-                && inputBuffer.Count < maxInputBufferSize)
+                && inputBuffer.Count < MAX_INPUT_BUFFER_SIZE)
                 inputBuffer.Add(_newTargetDirection.normalized);
-        }
-    }
-
-    public void OnJump(InputAction.CallbackContext _context)
-    {
-        if (_context.started)
-        {
-            if (bodySnake != null)
-            {
-                bodySnake.IncreaseLengthSnake();
-            }
         }
     }
 }
