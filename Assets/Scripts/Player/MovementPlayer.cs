@@ -125,9 +125,19 @@ public class MovementPlayer : MonoBehaviour
         }
         if (_newTargetDirection != Vector2.zero)
         {
-            if (inputBuffer.Count == 0 || inputBuffer[inputBuffer.Count - 1] != _newTargetDirection.normalized
-                && inputBuffer.Count < MAX_INPUT_BUFFER_SIZE)
+            if (IsMovementCanBeAddToBuffer(_newTargetDirection))
                 inputBuffer.Add(_newTargetDirection.normalized);
         }
+    }
+
+    bool IsMovementCanBeAddToBuffer(Vector2 _newDirection)
+    {
+        if (inputBuffer.Count == 0)
+            return _newDirection != lastDirection && _newDirection != -lastDirection;
+        if (inputBuffer.Count >= MAX_INPUT_BUFFER_SIZE)
+            return false;
+        if (inputBuffer[inputBuffer.Count - 1] == _newDirection)
+            return false;
+        return true;
     }
 }
