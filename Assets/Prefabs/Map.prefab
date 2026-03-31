@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &729676416299415566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9075272387865277068}
+  - component: {fileID: 7967013384391888994}
+  - component: {fileID: 4194480229683451603}
+  - component: {fileID: 4717455619173067176}
+  - component: {fileID: 4995643942443441935}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9075272387865277068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729676416299415566}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7967013384391888994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729676416299415566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447a54404e6ebb24aa7ed8b707f9c185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  mapSize: {x: 10, y: 10}
+  obstacleDensity: 0.1
+--- !u!114 &4194480229683451603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729676416299415566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 748d77df998197f47ae3386a137b47ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  basicTileSprites:
+  - {fileID: -7766637424382265647, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 4149926256698089342, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 2808559760237250731, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: -4538063122725819375, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+--- !u!114 &4717455619173067176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729676416299415566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0024851163f8e04abdc95357bc96961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  obstaclesTileSprites:
+  - {fileID: -8456478427777090964, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: -1995264254628278533, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 2555580190723849552, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 6169601833554923250, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 8417544052253738287, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 2773255209773601913, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 7090944001959623942, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 2500696142353463899, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: -3966303187228159042, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 1515115431280002928, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: -477816285014773587, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  - {fileID: 595951266643766092, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  mapTilesObstacles: []
+--- !u!114 &4995643942443441935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729676416299415566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ccb96e7ffdc6b4a929ac9462f8f624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  appleTileSprite: {fileID: -1804363338, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+  maxApples: 3
