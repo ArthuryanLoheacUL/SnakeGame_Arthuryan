@@ -89,6 +89,7 @@ public class MovementPlayer : MonoBehaviour
             snakeAudio.PlayHitWallSound();
         }
         GameManager.instance.GameOver();
+        ShakeCameraManager.instance.ShakeCamera(0.15f, 0.15f, lastDirection);
     }
 
     void EatApple()
