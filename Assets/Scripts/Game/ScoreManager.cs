@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int _points)
     {
         SetScore(score + _points);
-        SoundEffectManager.instance.PlayAudioSourcePitched(scoreSoundEffect, 0.5f, 0.1f);
+        SoundEffectManager.instance.PlayAudioSourceRandomPitched(scoreSoundEffect, 0.5f, 0.1f);
     }
 
     public int GetScore()

@@ -76,10 +76,19 @@ public class MovementPlayer : MonoBehaviour
                 SetPosition(pos + lastDirection);
             } else
             {
-                GameManager.instance.GameOver();
+                HitWall();
             }
             timer = 0f;
         }
+    }
+
+    void HitWall()
+    {
+        if (snakeAudio != null)
+        {
+            snakeAudio.PlayHitWallSound();
+        }
+        GameManager.instance.GameOver();
     }
 
     void EatApple()

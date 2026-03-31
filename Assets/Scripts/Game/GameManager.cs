@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isGameOver = false;
     public GameObject gameOverUI;
+    public SoundEffectManager.SnakeAudioClip gameOverAudioClip;
 
     private GameObject player;
 
@@ -124,5 +125,6 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         if (gameOverUI != null)
             gameOverUI.SetActive(true);
+        SoundEffectManager.instance.PlayAudioSourceSetPitch(gameOverAudioClip);
     }
 }
