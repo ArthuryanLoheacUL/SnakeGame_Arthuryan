@@ -31,7 +31,8 @@ public class MovementPlayer : MonoBehaviour
         {
             bodySnake.ResetSnake();
         }
-        SetPosition(_pos);
+        for (int _i = bodySnake.startLengthSnake - 1; _i >= 0; _i--)
+            SetPosition(_pos - (lastDirection * _i));
     }
 
     public void SetGlobalMapData(GlobalMapData _globalMapData)
