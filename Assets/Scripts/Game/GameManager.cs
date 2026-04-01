@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         {
             camera.transform.position = new Vector3(globalMapData.mapSize.x / 2 - 0.5f, globalMapData.mapSize.y / 2 + 0.5f, camera.transform.position.z);
         }
+        ComboMananger.Instance.Reset();
         ScoreManager.instance.ResetScore();
         ScoreManager.instance.SetTargetScore(targetScore);
     }

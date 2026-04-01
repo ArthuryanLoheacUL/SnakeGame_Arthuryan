@@ -24,6 +24,12 @@ public class ComboMananger : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void Reset()
+    {
+        comboCount = 0;
+        durationSinceLastAppleEatAudio = 0f;
+        scoreText.Reset();
+    }
 
     // Update is called once per frame
     void Update()

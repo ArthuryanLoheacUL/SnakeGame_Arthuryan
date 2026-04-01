@@ -36,8 +36,15 @@ public class ScoreText : MonoBehaviour
             multiplierText.text = "x" + ComboMananger.Instance.GetComboCount();
             int _maxCombo = Mathf.Min(ComboMananger.Instance.GetComboCount(), 5) - 1;
             multiplierText.fontSize = 18 + _maxCombo * 2;
-            multiplierText.color = Color.Lerp(Color.white, Color.red, _maxCombo / 4f);
         }
+    }
+
+    public void Reset()
+    {
+        scoreText.text = "0";
+        multiplierText.gameObject.SetActive(false);
+        intensityShake = 0f;
+        durationShake = 0f;
     }
 
     public void ShakeText(float _intensity, float _duration)
