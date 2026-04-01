@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ScoreText : MonoBehaviour
 {
@@ -7,15 +8,20 @@ public class ScoreText : MonoBehaviour
     [SerializeField]
     private TMP_Text multiplierText;
     private Vector3 originalPosition;
+    [SerializeField]
+    private Slider sliderTimeCombo;
 
     float durationShake = 0f;
+    float durationMax = 0f;
     float intensityShake = 0f;
+    bool isCombo = false;
 
     private void Start()
     {
         scoreText = GetComponent<TMP_Text>();
         originalPosition = scoreText.transform.localPosition;
         multiplierText.gameObject.SetActive(false);
+        sliderTimeCombo.gameObject.SetActive(false);
     }
 
     void Update()
@@ -24,10 +30,13 @@ public class ScoreText : MonoBehaviour
         {
             durationShake -= Time.deltaTime;
             scoreText.transform.localPosition = originalPosition + Random.insideUnitSphere * intensityShake;
+            sliderTimeCombo.gameObject.SetActive(isCombo);
+            sliderTimeCombo.value = durationShake / durationMax;
             if (durationShake <= 0)
             {
                 durationShake = 0;
                 scoreText.transform.localPosition = originalPosition;
+                sliderTimeCombo.gameObject.SetActive(false);
             }
         }
         if (ComboMananger.Instance != null)
@@ -47,9 +56,14 @@ public class ScoreText : MonoBehaviour
         durationShake = 0f;
     }
 
-    public void ShakeText(float _intensity, float _duration)
+    public void ShakeText(float _intensity, float _duration, bool _isCombo = false)
     {
         intensityShake = _intensity;
-        durationShake = _duration;
+        if (durationShake > 0 && durationShake < _duration || durationShake <= 0)
+        {
+            durationShake = _duration;
+            durationMax = _duration;
+        }
+        isCombo = _isCombo;
     }
 }

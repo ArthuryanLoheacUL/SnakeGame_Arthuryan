@@ -65,7 +65,7 @@ public class ComboMananger : MonoBehaviour
         else
         {
             int _comboPoints = Mathf.Min(comboCount, 5);
-            scoreText.ShakeText(DURATION_RESET_COMBO, 0.5f * _comboPoints);
+            scoreText.ShakeText(DURATION_RESET_COMBO, 0.5f * _comboPoints, true);
         }
     }
 
