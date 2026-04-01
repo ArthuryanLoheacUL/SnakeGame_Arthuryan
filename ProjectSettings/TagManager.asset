@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - CanvaUI
   layers:
   - Default
   - TransparentFX
@@ -55,6 +56,9 @@ TagManager:
     locked: 0
   - name: ObstacleTile
     uniqueID: 175606551
+    locked: 0
+  - name: UI
+    uniqueID: 1303850563
     locked: 0
   m_RenderingLayers:
   - Default

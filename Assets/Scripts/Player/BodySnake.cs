@@ -104,6 +104,26 @@ public class BodySnake : MonoBehaviour
         }
     }
 
+    public void SpreadWaveEatingApple()
+    {
+        StartCoroutine(SpreadWaveEatingAppleCoroutine());
+    }
+
+    private System.Collections.IEnumerator SpreadWaveEatingAppleCoroutine()
+    {
+        int _index = bodyParts.Count - 1;
+
+        while (_index >= 0)
+        {
+            Transform _bodyPartTransform = bodyParts[_index].transform;
+            Vector3 _originalScale = _bodyPartTransform.localScale;
+            _bodyPartTransform.localScale = _originalScale * Mathf.Lerp(1.5f, 1.0f, 1 - (_index / (float)bodyParts.Count));
+            yield return new WaitForSeconds(0.07f);
+            _bodyPartTransform.localScale = _originalScale;
+            _index--;
+        }
+    }
+
     // Destroy all existing body part GameObjects and create new ones based on the current positions of the snake, setting the appropriate sprite for each part based on its position and direction
     void RefreshSnakeBody()
     {
@@ -138,53 +158,6 @@ public class BodySnake : MonoBehaviour
             }
             _index++;
         }
-    }
-
-    // Get the appropriate sprite for the tail based on the direction of the second to last body part
-    Sprite GetSpriteFromDirection(SnakeSprite _sprites, Vector2 _direction)
-    {
-        if (_direction == Vector2.up)
-            return _sprites.up;
-        else if (_direction == Vector2.down)
-            return _sprites.down;
-        else if (_direction == Vector2.left)
-            return _sprites.left;
-        else if (_direction == Vector2.right)
-            return _sprites.right;
-        return null;
-    }
-
-    // Get the appropriate sprite for a body part based on the positions and directions of the previous and next body parts,
-    // determining if it's a straight segment or a corner and returning the corresponding sprite
-    Sprite GetSpriteForBody(Position _current, Position _previous, Position _next)
-    {
-        if (_current.position.x == _previous.position.x && _current.position.x == _next.position.x)
-            return bodySprite.vertical;
-        else if (_current.position.y == _previous.position.y && _current.position.y == _next.position.y)
-            return bodySprite.horizontal;
-        else if (_previous.position.x < _current.position.x && _next.position.y > _current.position.y ||
-                 _next.position.x < _current.position.x && _previous.position.y > _current.position.y)
-            return bodySprite.leftUp;
-        else if (_previous.position.x > _current.position.x && _next.position.y > _current.position.y ||
-                _next.position.x > _current.position.x && _previous.position.y > _current.position.y)
-            return bodySprite.rightUp;
-        else if (_previous.position.x < _current.position.x && _next.position.y < _current.position.y ||
-                _next.position.x < _current.position.x && _previous.position.y < _current.position.y)
-            return bodySprite.leftDown;
-        else if (_previous.position.x > _current.position.x && _next.position.y < _current.position.y ||
-                _next.position.x > _current.position.x && _previous.position.y < _current.position.y)
-            return bodySprite.rightDown;
-        return null;
-    }
-
-    // Get the appropriate sprite for a body part based on its index in the positions list, determining if it's the head, tail, or a body segment and returning the corresponding sprite
-    Sprite GetSprite(int _index, Vector2 _direction, List<Position> _positions = null)
-    {
-        if (_index == positions.Count - 1)
-            return GetSpriteFromHead(_direction);
-        else if (_index == 0)
-            return GetSpriteFromDirection(tailSprite, _positions[1].direction);
-        return GetSpriteForBody(_positions[_index], _positions[_index - 1], _positions[_index + 1]);
     }
 
     // Increase the length of the snake by incrementing the lengthSnake variable, allowing the snake to grow when it eats an apple
@@ -228,6 +201,31 @@ public class BodySnake : MonoBehaviour
                 impactWhiteDuration = 0;
             }
         }
+    }
+
+    // Set the current head state of the snake (basic, eating, or dead) and reset the head animation frame to 0 to start the new animation sequence
+    public void SetHeadState(HeadState _state)
+    {
+        currentHeadState = _state;
+        currentHeadFrame = 0;
+    }
+
+    // Trigger the impact with wall effect
+    public void ImpactWall()
+    {
+        SetHeadState(HeadState.Dead);
+        impactWhiteDuration = 0.12f;
+    }
+
+    #region Sprite Getters
+    // Get the appropriate sprite for a body part based on its index in the positions list, determining if it's the head, tail, or a body segment and returning the corresponding sprite
+    Sprite GetSprite(int _index, Vector2 _direction, List<Position> _positions = null)
+    {
+        if (_index == positions.Count - 1)
+            return GetSpriteFromHead(_direction);
+        else if (_index == 0)
+            return GetSpriteFromDirection(tailSprite, _positions[1].direction);
+        return GetSpriteForBody(_positions[_index], _positions[_index - 1], _positions[_index + 1]);
     }
 
     // Get the appropriate head sprite based on the current direction of the head and the current head state (basic, eating, or dead), returning the corresponding sprite for the head
@@ -274,17 +272,41 @@ public class BodySnake : MonoBehaviour
         }
     }
 
-    // Set the current head state of the snake (basic, eating, or dead) and reset the head animation frame to 0 to start the new animation sequence
-    public void SetHeadState(HeadState _state)
+    // Get the appropriate sprite for the tail based on the direction of the second to last body part
+    Sprite GetSpriteFromDirection(SnakeSprite _sprites, Vector2 _direction)
     {
-        currentHeadState = _state;
-        currentHeadFrame = 0;
+        if (_direction == Vector2.up)
+            return _sprites.up;
+        else if (_direction == Vector2.down)
+            return _sprites.down;
+        else if (_direction == Vector2.left)
+            return _sprites.left;
+        else if (_direction == Vector2.right)
+            return _sprites.right;
+        return null;
     }
 
-    // Trigger the impact with wall effect
-    public void ImpactWall()
+    // Get the appropriate sprite for a body part based on the positions and directions of the previous and next body parts,
+    // determining if it's a straight segment or a corner and returning the corresponding sprite
+    Sprite GetSpriteForBody(Position _current, Position _previous, Position _next)
     {
-        SetHeadState(HeadState.Dead);
-        impactWhiteDuration = 0.12f;
+        if (_current.position.x == _previous.position.x && _current.position.x == _next.position.x)
+            return bodySprite.vertical;
+        else if (_current.position.y == _previous.position.y && _current.position.y == _next.position.y)
+            return bodySprite.horizontal;
+        else if (_previous.position.x < _current.position.x && _next.position.y > _current.position.y ||
+                 _next.position.x < _current.position.x && _previous.position.y > _current.position.y)
+            return bodySprite.leftUp;
+        else if (_previous.position.x > _current.position.x && _next.position.y > _current.position.y ||
+                _next.position.x > _current.position.x && _previous.position.y > _current.position.y)
+            return bodySprite.rightUp;
+        else if (_previous.position.x < _current.position.x && _next.position.y < _current.position.y ||
+                _next.position.x < _current.position.x && _previous.position.y < _current.position.y)
+            return bodySprite.leftDown;
+        else if (_previous.position.x > _current.position.x && _next.position.y < _current.position.y ||
+                _next.position.x > _current.position.x && _previous.position.y < _current.position.y)
+            return bodySprite.rightDown;
+        return null;
     }
+    #endregion
 }

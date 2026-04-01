@@ -16,13 +16,14 @@ public class MovementPlayer : MonoBehaviour
     List<Vector2> inputBuffer = new List<Vector2>();
     const int MAX_INPUT_BUFFER_SIZE = 4;
 
-    // Audio
     private SnakeAudio snakeAudio;
+    private ComboMananger comboMananger;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         snakeAudio = GetComponent<SnakeAudio>();
+        comboMananger = GetComponent<ComboMananger>();
     }
 
     // Reset the snake's position and movement direction, and reset the body snake to its initial state
@@ -86,7 +87,7 @@ public class MovementPlayer : MonoBehaviour
             {
                 if (CheckAppleNextPosition(pos + lastDirection) && bodySnake != null)
                 {
-                    EatApple();
+                    EatApple(pos + lastDirection);
                 }
                 SetPosition(pos + lastDirection);
             } else
@@ -113,7 +114,7 @@ public class MovementPlayer : MonoBehaviour
     }
 
     // Handle the snake eating an apple
-    void EatApple()
+    void EatApple(Vector2 _pos)
     {
         globalMapData.RemoveAppleAtPosition(pos + lastDirection);
         if (bodySnake != null)
@@ -121,7 +122,14 @@ public class MovementPlayer : MonoBehaviour
             bodySnake.IncreaseLengthSnake();
             bodySnake.SetHeadState(BodySnake.HeadState.Eating);
         }
-        ScoreManager.instance.AddScore(50);
+        if (comboMananger != null)
+        {
+            comboMananger.IncrementCombo(pos + lastDirection);
+            ScoreManager.instance.AddScore(comboMananger.GetComboCount());
+        } else
+        {
+            ScoreManager.instance.AddScore(1);
+        }
         if (snakeAudio != null)
         {
             snakeAudio.PlayAppleEatSound();

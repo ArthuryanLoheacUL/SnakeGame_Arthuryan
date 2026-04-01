@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2996807916873114351}
   - component: {fileID: 7608378689909266321}
   - component: {fileID: 4541293828531219635}
+  - component: {fileID: 2960604118055063591}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -294,6 +295,19 @@ MonoBehaviour:
   snakeHissAudio:
     clip: {fileID: 8300000, guid: 24354386dd3d3da47bf70e26363c4ccc, type: 3}
     volume: 0.4
+--- !u!114 &2960604118055063591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754563601094664470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5922a8cc0091de648afdb66e2d7c950f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  comboIndicatorPrefab: {fileID: 7566638824859223291, guid: 410146bb97b38ee48a79dc8265157899, type: 3}
 --- !u!1 &8294970351084727010
 GameObject:
   m_ObjectHideFlags: 0
