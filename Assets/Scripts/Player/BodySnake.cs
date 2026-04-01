@@ -66,6 +66,7 @@ public class BodySnake : MonoBehaviour
 
     private float impactWhiteDuration = 0.0f;
     private Shader shaderGUItext;
+    private Shader shaderDefault;
 
     public GameObject trailSmoke;
 
@@ -73,6 +74,7 @@ public class BodySnake : MonoBehaviour
     public void ResetSnake()
     {
         shaderGUItext = Shader.Find("GUI/Text Shader");
+        shaderDefault = Shader.Find("Sprites/Default");
 
         lengthSnake = startLengthSnake;
         positions.Clear();
@@ -105,26 +107,35 @@ public class BodySnake : MonoBehaviour
     // Destroy all existing body part GameObjects and create new ones based on the current positions of the snake, setting the appropriate sprite for each part based on its position and direction
     void RefreshSnakeBody()
     {
-        foreach (GameObject _bodyPart in bodyParts)
-        {
-            Destroy(_bodyPart);
-        }
         int _index = 0;
 
         foreach (Position _position in positions)
         {
-            GameObject _bodyPart = new GameObject("BodyPart");
-            _bodyPart.transform.position = new Vector3(_position.position.x, _position.position.y, 0);
-            SpriteRenderer _renderer = _bodyPart.AddComponent<SpriteRenderer>();
+            SpriteRenderer _renderer;
+            if (_index < bodyParts.Count)
+            {
+                GameObject _bodyPart = bodyParts[_index];
+                _bodyPart.transform.position = new Vector3(_position.position.x, _position.position.y, 0);
+                _renderer = _bodyPart.GetComponent<SpriteRenderer>();
+            }
+            else
+            {
+                GameObject _newBodyPart = new GameObject("BodyPart");
+                _newBodyPart.transform.position = new Vector3(_position.position.x, _position.position.y, 0);
+                _renderer = _newBodyPart.AddComponent<SpriteRenderer>();
+                _renderer.sortingLayerName = "Player";
+                _newBodyPart.transform.parent = transform;
+                bodyParts.Add(_newBodyPart);
+            }
             _renderer.sprite = GetSprite(_index, _position.direction, positions);
-            _renderer.sortingLayerName = "Player";
             if (impactWhiteDuration > 0)
             {
                 _renderer.material.shader = shaderGUItext;
-                _renderer.color = Color.white;
             }
-            _bodyPart.transform.parent = transform;
-            bodyParts.Add(_bodyPart);
+            else
+            {
+                _renderer.material.shader = shaderDefault;
+            }
             _index++;
         }
     }
