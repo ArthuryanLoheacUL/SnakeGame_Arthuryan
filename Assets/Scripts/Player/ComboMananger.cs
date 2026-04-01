@@ -2,11 +2,28 @@ using UnityEngine;
 
 public class ComboMananger : MonoBehaviour
 {
+    public static ComboMananger Instance { get; private set; }
+
     int comboCount = 0;
     float durationSinceLastAppleEatAudio = 0f;
     const float DURATION_RESET_COMBO = 2f;
 
-    public GameObject comboIndicatorPrefab;
+    [SerializeField]
+    private ScoreText scoreText;
+    [SerializeField]
+    private GameObject comboIndicatorPrefab;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,6 +46,20 @@ public class ComboMananger : MonoBehaviour
         if (_comboIndicator1 != null)
         {
             _comboIndicator1.Setup(comboCount, 0.75f);
+        }
+        SetupShakeScore();
+    }
+
+    void SetupShakeScore()
+    {
+        if (comboCount <= 1)
+        {
+            scoreText.ShakeText(1f, 0.2f);
+        }
+        else
+        {
+            int _comboPoints = Mathf.Min(comboCount, 5);
+            scoreText.ShakeText(DURATION_RESET_COMBO, 0.5f * _comboPoints);
         }
     }
 

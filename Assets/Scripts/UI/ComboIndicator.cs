@@ -20,6 +20,10 @@ public class ComboIndicator : MonoBehaviour
         }
         int _xRand = Random.Range(-30, 31);
         direction = new Vector3(_xRand / 100f, 2, 0);
+        int _maxCombo = Mathf.Min(_comboCount, 5);
+
+        comboText.fontSize = 24 + _maxCombo * 2;
+        comboText.color = Color.Lerp(Color.white, Color.red, _maxCombo / 5f);
     }
 
     void Update()

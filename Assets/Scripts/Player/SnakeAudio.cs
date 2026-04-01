@@ -9,23 +9,13 @@ public class SnakeAudio : MonoBehaviour
     const float PITCH_INCREMENT_EAT_AUDIO = 0.05f;
     const float MIN_PITCH_EAT_AUDIO = 0.8f;
 
-    ComboMananger comboMananger;
-    private void Awake()
-    {
-        comboMananger = GetComponent<ComboMananger>();
-        if (comboMananger == null)
-        {
-            comboMananger = gameObject.AddComponent<ComboMananger>();
-        }
-    }
-
     // Play the apple eat sound effect with a pitch that increases each time the snake eats an apple
     public void PlayAppleEatSound()
     {
         float _pitch = MIN_PITCH_EAT_AUDIO;
-        if (comboMananger != null)
+        if (ComboMananger.Instance != null)
         {
-            int _comboCount = Mathf.Min(comboMananger.GetComboCount(), 5);
+            int _comboCount = Mathf.Min(ComboMananger.Instance.GetComboCount(), 5);
             _pitch += (_comboCount - 1) * PITCH_INCREMENT_EAT_AUDIO;
         }
 

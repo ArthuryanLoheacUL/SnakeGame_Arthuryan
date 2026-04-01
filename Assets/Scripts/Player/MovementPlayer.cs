@@ -17,13 +17,11 @@ public class MovementPlayer : MonoBehaviour
     const int MAX_INPUT_BUFFER_SIZE = 4;
 
     private SnakeAudio snakeAudio;
-    private ComboMananger comboMananger;
 
     // Start is called before the first frame update
     void Awake()
     {
         snakeAudio = GetComponent<SnakeAudio>();
-        comboMananger = GetComponent<ComboMananger>();
     }
 
     // Reset the snake's position and movement direction, and reset the body snake to its initial state
@@ -122,10 +120,10 @@ public class MovementPlayer : MonoBehaviour
             bodySnake.IncreaseLengthSnake();
             bodySnake.SetHeadState(BodySnake.HeadState.Eating);
         }
-        if (comboMananger != null)
+        if (ComboMananger.Instance != null)
         {
-            comboMananger.IncrementCombo(pos + lastDirection);
-            ScoreManager.instance.AddScore(comboMananger.GetComboCount());
+            ComboMananger.Instance.IncrementCombo(pos + lastDirection);
+            ScoreManager.instance.AddScore(ComboMananger.Instance.GetComboCount());
         } else
         {
             ScoreManager.instance.AddScore(1);
