@@ -3,6 +3,7 @@ using UnityEngine;
 public class SnakeAudio : MonoBehaviour
 {
     public SoundEffectManager.SnakeAudioClip appleEatAudio;
+    public SoundEffectManager.SnakeAudioClip appleEatComboedAudio;
     public SoundEffectManager.SnakeAudioClip hitWallAudio;
     public SoundEffectManager.SnakeAudioClip snakeHissAudio;
 
@@ -20,6 +21,10 @@ public class SnakeAudio : MonoBehaviour
         }
 
         SoundEffectManager.instance.PlayAudioSourceSetPitch(appleEatAudio, _pitch);
+        if (ComboMananger.Instance != null && ComboMananger.Instance.GetComboCount() >= 5)
+        {
+            SoundEffectManager.instance.PlayAudioSourceSetPitch(appleEatComboedAudio, _pitch);
+        }
     }
 
     // Play the hit wall sounds effect

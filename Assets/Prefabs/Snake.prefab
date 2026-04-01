@@ -288,6 +288,9 @@ MonoBehaviour:
   appleEatAudio:
     clip: {fileID: 8300000, guid: 47ebc579d1a5bc542b22d52ad683094e, type: 3}
     volume: 1.5
+  appleEatComboedAudio:
+    clip: {fileID: 8300000, guid: 464a5b8ec93eb564ca9234b9faf3a206, type: 3}
+    volume: 0.35
   hitWallAudio:
     clip: {fileID: 8300000, guid: f5d20d450cc54c94d8b8a2de6ca14fa0, type: 3}
     volume: 0.3

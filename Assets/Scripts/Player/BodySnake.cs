@@ -167,11 +167,11 @@ public class BodySnake : MonoBehaviour
     }
 
     // Check if a given position is occupied by any part of the snake's body (excluding the tail) by iterating through the positions list and comparing each position with the given position
-    public bool IsPositionOnSnake(Vector2 _position)
+    public bool IsPositionOnSnake(Vector2 _position, bool _includeTail = false)
     {
         foreach (Position _pos in positions)
         {
-            if (_pos.position == _position && _pos.position != positions[0].position)
+            if (_pos.position == _position && (_pos.position != positions[0].position || _includeTail))
             {
                 return true;
             }

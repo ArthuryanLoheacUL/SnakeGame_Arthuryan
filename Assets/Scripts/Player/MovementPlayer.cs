@@ -132,6 +132,16 @@ public class MovementPlayer : MonoBehaviour
         {
             snakeAudio.PlayAppleEatSound();
         }
+        StartCoroutine(FreezeFrame(0.1f));
+        int _maxCombo = ComboMananger.Instance != null ? Mathf.Min(ComboMananger.Instance.GetComboCount(), 5) : 0;
+        ShakeCameraManager.instance.ShakeCamera(0.1f, _maxCombo * 0.025f, new Vector2(1, 1));
+    }
+
+    System.Collections.IEnumerator FreezeFrame(float _duration)
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(_duration);
+        Time.timeScale = 1f;
     }
 
     // Check if there is an apple at the next position the snake will move to
@@ -164,7 +174,7 @@ public class MovementPlayer : MonoBehaviour
     {
         if (bodySnake != null)
         {
-            return !bodySnake.IsPositionOnSnake(_position);
+            return !bodySnake.IsPositionOnSnake(_position, true);
         }
         return true;
     }
