@@ -6,11 +6,13 @@ public class MapAppleGenerator : MonoBehaviour
     private GlobalMapData globalMapData;
     public Sprite appleTileSprite;
     private List<GameObject> apples;
-    public int maxApples = 3;
+    private int maxApples = 3;
+    public int startApples = 3;
 
     // Clear the previous map and generate a new one with new apple positions
     public void GenerateNewApplesMap()
     {
+        maxApples = startApples;
         globalMapData = GetComponent<GlobalMapData>();
         if (globalMapData == null)
         {
@@ -38,6 +40,10 @@ public class MapAppleGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ScoreManager.instance != null && ScoreManager.instance.GetScore() >= (maxApples - 2) * 10)
+        {
+            maxApples++;
+        }
         if (apples.Count < maxApples)
         {
             GenerateApplesMap(false);
