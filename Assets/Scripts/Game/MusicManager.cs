@@ -5,6 +5,7 @@ public class MusicManager : MonoBehaviour
     public static MusicManager instance;
     private AudioSource audioSource;
 
+    // Awake is called when the script instance is being loaded
     private void Awake()
     {
         if (instance == null)
@@ -18,6 +19,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    // Play the specified music clip with the given volume
     public void PlayMusic(AudioClip _musicClip, float _volume = 1f)
     {
         if (audioSource == null)
@@ -38,6 +40,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    // Stop the currently playing music if there is one
     public void StopMusic()
     {
         if (audioSource != null && audioSource.isPlaying)

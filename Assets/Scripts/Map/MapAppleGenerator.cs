@@ -8,7 +8,7 @@ public class MapAppleGenerator : MonoBehaviour
     private List<GameObject> apples;
     public int maxApples = 3;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Clear the previous map and generate a new one with new apple positions
     public void GenerateNewApplesMap()
     {
         globalMapData = GetComponent<GlobalMapData>();
@@ -22,6 +22,7 @@ public class MapAppleGenerator : MonoBehaviour
         GenerateApplesMap(true);
     }
 
+    // Destroy all existing apple GameObjects and clear the apples list
     void DestroyApples()
     {
         if (apples != null)
@@ -43,6 +44,7 @@ public class MapAppleGenerator : MonoBehaviour
         }
     }
 
+    // Generate new apple tiles at random available positions on the map, ensuring they do not overlap with the snake or obstacles
     void GenerateApplesMap(bool _firstApples)
     {
         BodySnake _bodySnake = FindAnyObjectByType<BodySnake>();
@@ -63,6 +65,7 @@ public class MapAppleGenerator : MonoBehaviour
         }
     }
 
+    // Get a list of available positions on the map where an apple can be placed, ensuring they do not overlap with the snake or obstacles
     List<Vector2> GetAvailablePositions(BodySnake _bodySnake, bool _firstApples)
     {
         List<Vector2> _availablePositions = new List<Vector2>();
@@ -86,6 +89,7 @@ public class MapAppleGenerator : MonoBehaviour
         return _availablePositions;
     }
 
+    // Generate a new apple tile GameObject at the specified position and parent it to the MapAppleGenerator's transform
     void GenerateAppleTile(int _i, int _j, Transform _parent)
     {
         GameObject _tile = new GameObject($"Apple_{_i}_{_j}");
@@ -101,6 +105,7 @@ public class MapAppleGenerator : MonoBehaviour
         apples.Add(_tile);
     }
 
+    // Check if there is an apple tile at the specified position by comparing the position of each apple tile with the given position
     public bool IsAppleTileAtPosition(Vector2 _position)
     {
         foreach (GameObject _tile in apples)
@@ -113,6 +118,7 @@ public class MapAppleGenerator : MonoBehaviour
         return false;
     }
 
+    // Remove the apple tile at the specified position by finding the apple tile with the matching position, destroying it, and removing it from the apples list
     public void RemoveAppleAtPosition(Vector2 _position)
     {
         for (int _i = 0; _i < apples.Count; _i++)

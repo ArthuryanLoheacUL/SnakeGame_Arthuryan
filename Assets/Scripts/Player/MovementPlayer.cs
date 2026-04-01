@@ -19,11 +19,13 @@ public class MovementPlayer : MonoBehaviour
     // Audio
     private SnakeAudio snakeAudio;
 
+    // Start is called before the first frame update
     void Start()
     {
         snakeAudio = GetComponent<SnakeAudio>();
     }
 
+    // Reset the snake's position and movement direction, and reset the body snake to its initial state
     public void ResetMovement(Vector2 _pos)
     {
         bodySnake = GetComponent<BodySnake>();
@@ -43,11 +45,13 @@ public class MovementPlayer : MonoBehaviour
             SetPosition(_pos - (lastDirection * _i));
     }
 
+    // Set the reference to the global map data, which is used for checking collisions and apple positions
     public void SetGlobalMapData(GlobalMapData _globalMapData)
     {
         globalMapData = _globalMapData;
     }
 
+    // Set the snake's position and update the body snake's position accordingly
     public void SetPosition(Vector2 _position)
     {
         pos = _position;
@@ -58,6 +62,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (GameManager.instance.isGameOver)
@@ -65,6 +70,7 @@ public class MovementPlayer : MonoBehaviour
         UpdateMovement();
     }
 
+    // Update the snake's movement based on the timer and input buffer
     void UpdateMovement()
     {
         timer += Time.deltaTime;
@@ -91,6 +97,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    // Handle the snake hitting a wall or obstacle
     void HitWall()
     {
         if (snakeAudio != null)
@@ -105,6 +112,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    // Handle the snake eating an apple
     void EatApple()
     {
         globalMapData.RemoveAppleAtPosition(pos + lastDirection);
@@ -120,6 +128,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    // Check if there is an apple at the next position the snake will move to
     bool CheckAppleNextPosition(Vector2 _position)
     {
         if (globalMapData != null)
@@ -129,6 +138,7 @@ public class MovementPlayer : MonoBehaviour
         return false;
     }
 
+    // Check if the next position the snake will move to is valid
     bool CheckCollisionNextPosition(Vector2 _position)
     {
         if (globalMapData != null)
@@ -143,6 +153,7 @@ public class MovementPlayer : MonoBehaviour
         return true;
     }
 
+    // Check if the next position the snake will move to collides with its own body
     bool CheckCollisionNextPositionWithBodySnake(Vector2 _position)
     {
         if (bodySnake != null)
@@ -152,6 +163,7 @@ public class MovementPlayer : MonoBehaviour
         return true;
     }
 
+    // Handle the input for moving the snake, and add valid movement directions to the input buffer
     public void OnMove(InputAction.CallbackContext _context)
     {
         Vector2 _input = _context.ReadValue<Vector2>();
@@ -171,6 +183,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    // Check if the new movement direction can be added to the input buffer based on the current direction and buffer state
     bool IsMovementCanBeAddToBuffer(Vector2 _newDirection)
     {
         if (inputBuffer.Count == 0)

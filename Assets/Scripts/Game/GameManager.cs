@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public SoundEffectManager.SnakeAudioClip gameOverAudioClip;
     public SoundEffectManager.SnakeAudioClip winAudioClip;
 
-
+    // Awake is called when the script instance is being loaded
     void Awake()
     {
         if (instance == null)
@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
         RestartGame();
     }
 
+    // Restart the game by resetting the game
     public void RestartGame()
     {
         isGameOver = false;
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
         ScoreManager.instance.SetTargetScore(targetScore);
     }
 
-
+    // Generate new maps
     void GenerateMaps()
     {
         if (globalMapData == null)
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
             mapAppleGenerator.GenerateNewApplesMap();
     }
 
+    // Create a new player GameObject on the map at the center position
     GameObject CreatePlayerOnTheMap()
     {
         if (playerPrefab == null)
@@ -109,6 +111,7 @@ public class GameManager : MonoBehaviour
         return Instantiate(playerPrefab, _playerPosition, Quaternion.identity);
     }
 
+    // Set the player's position to the center of the map and reset its movement and global map data reference
     void SetPositionPlayer(GameObject _player)
     {
         if (_player == null)
@@ -126,6 +129,7 @@ public class GameManager : MonoBehaviour
         _movementPlayer.SetGlobalMapData(globalMapData);
     }
 
+    // Handle the game over state
     public void GameOver()
     {
         if (isGameOver)

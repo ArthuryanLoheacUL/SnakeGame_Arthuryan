@@ -22,6 +22,7 @@ public class ScoreManager : MonoBehaviour
     public AudioClip targetReached;
     public AudioClip highScoreSoundEffect;
 
+    // Awake is called when the script instance is being loaded
     void Awake()
     {
         if (instance == null)
@@ -48,6 +49,7 @@ public class ScoreManager : MonoBehaviour
         ResetScore();
     }
 
+    // Add the specified points to the current score
     public void AddScore(int _points)
     {
         SetScore(score + _points);
@@ -69,11 +71,13 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    // Get the current score
     public int GetScore()
     {
         return score;
     }
 
+    // Reset the score to zero and update the target and high score reached flags
     public void ResetScore()
     {
         SetScore(0);
@@ -81,24 +85,28 @@ public class ScoreManager : MonoBehaviour
         highScoreReached = false;
     }
 
+    // Set the target score and update the target score text
     public void SetTargetScore(int _targetScore)
     {
         targetScore = _targetScore;
         RefreshTargetScoreText();
     }
 
+    // Set the high score and update the high score text
     public void SetHighScore(int _highScore)
     {
         highScore = _highScore;
         RefreshHighScoreText();
     }
 
+    // Set the current score and update the score text
     void SetScore(int _score)
     {
         score = _score;
         RefreshScoreText();
     }
 
+    // Refresh the score text to display the current score
     void RefreshScoreText()
     {
         if (scoreText != null)
@@ -107,6 +115,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    // Refresh the high score text to display the current high score
     void RefreshHighScoreText()
     {
         if (highScoreText != null)
@@ -115,6 +124,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    // Refresh the target score text to display the current target score
     void RefreshTargetScoreText()
     {
         if (targetScoreText != null)

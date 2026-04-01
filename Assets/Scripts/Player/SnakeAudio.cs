@@ -13,6 +13,7 @@ public class SnakeAudio : MonoBehaviour
     const float DURATION_RESET_PITCH_EAT_AUDIO = 2.5f;
     const float MIN_PITCH_EAT_AUDIO = 0.8f;
 
+    // Play the apple eat sound effect with a pitch that increases each time the snake eats an apple
     public void PlayAppleEatSound()
     {
         SoundEffectManager.instance.PlayAudioSourceSetPitch(appleEatAudio, pitchEatAudio);
@@ -24,8 +25,10 @@ public class SnakeAudio : MonoBehaviour
         durationSinceLastAppleEatAudio = 0f;
     }
 
+    // Update is called once per frame
     void Update()
     {
+        // Reset the pitch after a certain duration has passed since the last time the snake ate an apple
         if (pitchEatAudio > MIN_PITCH_EAT_AUDIO)
         {
             durationSinceLastAppleEatAudio += Time.deltaTime;
@@ -37,6 +40,7 @@ public class SnakeAudio : MonoBehaviour
         }
     }
 
+    // Play the hit wall sounds effect
     public void PlayHitWallSound()
     {
         SoundEffectManager.instance.PlayAudioSourceRandomPitched(hitWallAudio);

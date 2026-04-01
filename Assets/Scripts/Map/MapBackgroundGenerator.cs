@@ -9,7 +9,7 @@ public class MapBackgroundGenerator : MonoBehaviour
     [HideInInspector]
     public List<List<GameObject>> mapTilesBackground;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Clear and regenerate the background map with new tile sprites
     public void GenerateNewBackgroundMap()
     {
         globalMapData = GetComponent<GlobalMapData>();
@@ -22,6 +22,7 @@ public class MapBackgroundGenerator : MonoBehaviour
         GenerateBackgroundMap();
     }
 
+    // Destroy all existing tile GameObjects and clear the mapTilesBackground list
     void DestroyMap()
     {
         if (mapTilesBackground != null)
@@ -55,6 +56,7 @@ public class MapBackgroundGenerator : MonoBehaviour
         }
     }
 
+    // Generate a single tile GameObject at the specified coordinates
     void GenerateBackgroundTile(int _i, int _j, Transform _parent)
     {
         GameObject _tile = new GameObject($"Tile_{_i}_{_j}");

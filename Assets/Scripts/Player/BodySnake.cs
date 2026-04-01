@@ -69,7 +69,7 @@ public class BodySnake : MonoBehaviour
 
     public GameObject trailSmoke;
 
-
+    // Reset the snake to its initial state, clearing all body parts and resetting the length and positions
     public void ResetSnake()
     {
         shaderGUItext = Shader.Find("GUI/Text Shader");
@@ -83,6 +83,7 @@ public class BodySnake : MonoBehaviour
         bodyParts.Clear();
     }
 
+    // Add a new position to the snake's body. Keeping a max number of positions based on the current length of the snake, and refreshing the body parts to match the new positions
     public void AddPositionSnake(Vector2 _position, Vector2 _direction)
     {
         Position _partPos = new Position();
@@ -101,6 +102,7 @@ public class BodySnake : MonoBehaviour
         }
     }
 
+    // Destroy all existing body part GameObjects and create new ones based on the current positions of the snake, setting the appropriate sprite for each part based on its position and direction
     void RefreshSnakeBody()
     {
         foreach (GameObject _bodyPart in bodyParts)
@@ -127,6 +129,7 @@ public class BodySnake : MonoBehaviour
         }
     }
 
+    // Get the appropriate sprite for the tail based on the direction of the second to last body part
     Sprite GetSpriteFromDirection(SnakeSprite _sprites, Vector2 _direction)
     {
         if (_direction == Vector2.up)
@@ -140,6 +143,8 @@ public class BodySnake : MonoBehaviour
         return null;
     }
 
+    // Get the appropriate sprite for a body part based on the positions and directions of the previous and next body parts,
+    // determining if it's a straight segment or a corner and returning the corresponding sprite
     Sprite GetSpriteForBody(Position _current, Position _previous, Position _next)
     {
         if (_current.position.x == _previous.position.x && _current.position.x == _next.position.x)
@@ -161,6 +166,7 @@ public class BodySnake : MonoBehaviour
         return null;
     }
 
+    // Get the appropriate sprite for a body part based on its index in the positions list, determining if it's the head, tail, or a body segment and returning the corresponding sprite
     Sprite GetSprite(int _index, Vector2 _direction, List<Position> _positions = null)
     {
         if (_index == positions.Count - 1)
@@ -170,11 +176,13 @@ public class BodySnake : MonoBehaviour
         return GetSpriteForBody(_positions[_index], _positions[_index - 1], _positions[_index + 1]);
     }
 
+    // Increase the length of the snake by incrementing the lengthSnake variable, allowing the snake to grow when it eats an apple
     public void IncreaseLengthSnake()
     {
         lengthSnake++;
     }
 
+    // Check if a given position is occupied by any part of the snake's body (excluding the tail) by iterating through the positions list and comparing each position with the given position
     public bool IsPositionOnSnake(Vector2 _position)
     {
         foreach (Position _pos in positions)
@@ -187,6 +195,7 @@ public class BodySnake : MonoBehaviour
         return false;
     }
 
+    // Update is called once per frame
     void Update()
     {
         // Update the head sprite based on the current direction
@@ -199,6 +208,7 @@ public class BodySnake : MonoBehaviour
             RefreshSnakeBody();
         }
 
+        // Update the impact white effect duration, resetting it to 0 when it expires
         if (impactWhiteDuration > 0)
         {
             impactWhiteDuration -= Time.deltaTime;
@@ -209,6 +219,7 @@ public class BodySnake : MonoBehaviour
         }
     }
 
+    // Get the appropriate head sprite based on the current direction of the head and the current head state (basic, eating, or dead), returning the corresponding sprite for the head
     Sprite GetSpriteFromHead(Vector2 _direction)
     {
         switch (_direction.x, _direction.y)
@@ -226,6 +237,8 @@ public class BodySnake : MonoBehaviour
         }
     }
 
+    // Get the appropriate head sprite based on the current head state (basic, eating, or dead) and the corresponding sprites for each state
+    // returning the correct sprite for the head based on its current state and animation frame
     Sprite GetSpriteFromHeadDirection(HeadSnakePart _snakePart)
     {
         switch (currentHeadState)
@@ -250,12 +263,14 @@ public class BodySnake : MonoBehaviour
         }
     }
 
+    // Set the current head state of the snake (basic, eating, or dead) and reset the head animation frame to 0 to start the new animation sequence
     public void SetHeadState(HeadState _state)
     {
         currentHeadState = _state;
         currentHeadFrame = 0;
     }
 
+    // Trigger the impact with wall effect
     public void ImpactWall()
     {
         SetHeadState(HeadState.Dead);

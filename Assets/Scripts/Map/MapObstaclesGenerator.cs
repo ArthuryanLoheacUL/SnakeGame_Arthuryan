@@ -7,7 +7,7 @@ public class MapObstaclesGenerator : MonoBehaviour
     public Sprite[] obstaclesTileSprites;
     public List<GameObject> mapTilesObstacles;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Clear the previous map and generate a new one with new obstacle positions
     public void GenerateNewObstaclesMap()
     {
         globalMapData = GetComponent<GlobalMapData>();
@@ -20,12 +20,7 @@ public class MapObstaclesGenerator : MonoBehaviour
         GenerateObstaclesMap();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Destroy all existing obstacle GameObjects and clear the mapTilesObstacles list
     void DestroyObstaclesMap()
     {
         if (mapTilesObstacles != null)
@@ -38,6 +33,7 @@ public class MapObstaclesGenerator : MonoBehaviour
         }
     }
 
+    // Generate new obstacle tiles at random available positions on the map, ensuring they do not overlap with the snake or apples
     void GenerateObstaclesMap()
     {
         // Create a parent GameObject to organize the tiles in the hierarchy
@@ -64,6 +60,7 @@ public class MapObstaclesGenerator : MonoBehaviour
         }
     }
 
+    // Get a list of available spaces on the map where obstacles can be placed, excluding the middle row to ensure a clear path for the snake
     List<Vector2> GetAvailableSpaces()
     {
         List<Vector2> _availableSpaces = new List<Vector2>();
@@ -81,6 +78,7 @@ public class MapObstaclesGenerator : MonoBehaviour
         return _availableSpaces;
     }
 
+    // Generate a single obstacle tile at the specified position and parent it to the given transform
     void GenerateObstacleTile(int _i, int _j, Transform _parent)
     {
         GameObject _tile = new GameObject($"Tile_{_i}_{_j}");
@@ -108,6 +106,7 @@ public class MapObstaclesGenerator : MonoBehaviour
         return obstaclesTileSprites[_index];
     }
 
+    // Check if there is an obstacle tile at the specified position by comparing the position of each obstacle tile with the given position
     public bool IsObstacleTileAtPosition(Vector2 _position)
     {
         foreach (GameObject _tile in mapTilesObstacles)
