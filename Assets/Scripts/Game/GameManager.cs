@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         }
         if (camera != null)
         {
-            camera.transform.position = new Vector3(globalMapData.mapSize.x / 2 - 0.5f, globalMapData.mapSize.y / 2 + 0.25f, camera.transform.position.z);
+            camera.transform.position = new Vector3(globalMapData.mapSize.x / 2 - 0.5f, globalMapData.mapSize.y / 2 + 0.5f, camera.transform.position.z);
         }
         ScoreManager.instance.ResetScore();
         ScoreManager.instance.SetTargetScore(targetScore);
