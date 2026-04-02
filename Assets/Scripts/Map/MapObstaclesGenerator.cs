@@ -5,7 +5,8 @@ public class MapObstaclesGenerator : MonoBehaviour
 {
     private GlobalMapData globalMapData;
     public Sprite[] obstaclesTileSprites;
-    public List<GameObject> mapTilesObstacles;
+    [SerializeField] private GameObject obstacleTilePrefab;
+    private List<GameObject> mapTilesObstacles;
 
     // Clear the previous map and generate a new one with new obstacle positions
     public void GenerateNewObstaclesMap()
@@ -81,10 +82,8 @@ public class MapObstaclesGenerator : MonoBehaviour
     // Generate a single obstacle tile at the specified position and parent it to the given transform
     void GenerateObstacleTile(int _i, int _j, Transform _parent)
     {
-        GameObject _tile = new GameObject($"Tile_{_i}_{_j}");
-        _tile.transform.position = new Vector3(_i, _j, 0);
-        _tile.transform.parent = _parent;
-        SpriteRenderer _renderer = _tile.AddComponent<SpriteRenderer>();
+        GameObject _tile = Instantiate(obstacleTilePrefab, new Vector3(_i, _j, 0), Quaternion.identity, _parent);
+        SpriteRenderer _renderer = _tile.GetComponent<SpriteRenderer>();
         _renderer.sortingLayerName = "ObstacleTile";
         _renderer.sprite = GetRandomTileSprite();
         if (_renderer.sprite == null)
