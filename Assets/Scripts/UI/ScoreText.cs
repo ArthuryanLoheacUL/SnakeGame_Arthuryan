@@ -1,5 +1,6 @@
-using UnityEngine;
 using TMPro;
+using Unity.Burst.Intrinsics;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreText : MonoBehaviour
@@ -15,6 +16,9 @@ public class ScoreText : MonoBehaviour
     float durationMax = 0f;
     float intensityShake = 0f;
     bool isCombo = false;
+
+    public Color colorSimpleCombo = Color.white;
+    public Color colorChargedCombo = Color.yellow;
 
     private void Start()
     {
@@ -41,6 +45,8 @@ public class ScoreText : MonoBehaviour
         }
         if (ComboMananger.Instance != null)
         {
+            if (sliderTimeCombo.fillRect.GetComponent<Image>())
+                sliderTimeCombo.fillRect.GetComponent<Image>().color = (ComboMananger.Instance.GetComboCount() >= 5 ? colorChargedCombo : colorSimpleCombo);
             multiplierText.gameObject.SetActive(ComboMananger.Instance.GetComboCount() > 1);
             multiplierText.text = "x" + ComboMananger.Instance.GetComboCount();
             int _maxCombo = Mathf.Min(ComboMananger.Instance.GetComboCount(), 5) - 1;
@@ -54,16 +60,18 @@ public class ScoreText : MonoBehaviour
         multiplierText.gameObject.SetActive(false);
         intensityShake = 0f;
         durationShake = 0f;
+        sliderTimeCombo.gameObject.SetActive(false);
     }
 
     public void ShakeText(float _intensity, float _duration, bool _isCombo = false)
     {
-        intensityShake = _intensity;
+        // Only update the shake if the new duration is longer than the current one, or if there is no shake currently active
         if (durationShake > 0 && durationShake < _duration || durationShake <= 0)
         {
+            intensityShake = _intensity;
             durationShake = _duration;
             durationMax = _duration;
+            isCombo = _isCombo;
         }
-        isCombo = _isCombo;
     }
 }
