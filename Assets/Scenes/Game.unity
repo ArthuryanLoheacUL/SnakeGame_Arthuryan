@@ -983,6 +983,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1118,6 +1119,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1183362f9520a44198605f9b1a33944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2796724bb9d103b4ba614b7d5c67d7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
 --- !u!1 &587165795
@@ -4910,6 +4923,7 @@ MonoBehaviour:
   gameOverText: {fileID: 1957026525}
   gameOverMessage: Game Over!
   winMessage: Target Reached!
+  delayBeforeShowing: 0.75
 --- !u!1 &2098774836
 GameObject:
   m_ObjectHideFlags: 0
@@ -5087,6 +5101,10 @@ PrefabInstance:
       propertyPath: 'obstaclesTileSprites.Array.data[17]'
       value: 
       objectReference: {fileID: -8539285723021232745, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4995643942443441935, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: appleTilePrefab
+      value: 
+      objectReference: {fileID: 6369535034211911585, guid: d5cae5e042b61864ebcca052128b987a, type: 3}
     - target: {fileID: 7967013384391888994, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
       propertyPath: mapSize.x
       value: 20

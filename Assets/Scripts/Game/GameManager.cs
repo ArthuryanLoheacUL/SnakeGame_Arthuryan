@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public SoundEffectManager.SnakeAudioClip gameOverAudioClip;
     public SoundEffectManager.SnakeAudioClip winAudioClip;
 
+    private ZoomOnDeath zoomOnDeath;
+
     // Awake is called when the script instance is being loaded
     void Awake()
     {
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
         mapObstaclesGenerator = mapGenerator.GetComponent<MapObstaclesGenerator>();
         mapAppleGenerator = mapGenerator.GetComponent<MapAppleGenerator>();
         globalMapData = mapGenerator.GetComponent<GlobalMapData>();
+        zoomOnDeath = camera.GetComponent<ZoomOnDeath>();
         RestartGame();
     }
 
@@ -78,7 +81,13 @@ public class GameManager : MonoBehaviour
         }
         if (camera != null)
         {
+            camera.transform.rotation = Quaternion.Euler(0, 0, 0);
             camera.transform.position = new Vector3(globalMapData.mapSize.x / 2 - 0.5f, globalMapData.mapSize.y / 2 + 0.5f, camera.transform.position.z);
+            if (zoomOnDeath != null)
+            {
+                zoomOnDeath.SetupOriginalPosition();
+                zoomOnDeath.ResetZoom();
+            }
         }
         ComboMananger.Instance.Reset();
         ScoreManager.instance.ResetScore();
@@ -162,5 +171,10 @@ public class GameManager : MonoBehaviour
             SoundEffectManager.instance.PlayAudioSourceSetPitch(gameOverAudioClip);
         else
             SoundEffectManager.instance.PlayAudioSourceSetPitch(winAudioClip);
+
+        if (zoomOnDeath != null)
+        {
+            zoomOnDeath.ZoomAtPos(player.transform.position);
+        }
     }
 }

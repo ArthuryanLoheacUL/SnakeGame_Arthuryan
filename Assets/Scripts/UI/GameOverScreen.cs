@@ -13,13 +13,15 @@ public class GameOverScreen : MonoBehaviour
     bool isMoving = false;
 
     float speedAnimation = 8f;
-    float previousTime = 0f;
-    float thisTime = 0f;
+
+    public float delayBeforeShowing = 0.5f;
 
     void Start()
     {
         initialPos = gameObject.GetComponent<RectTransform>().anchoredPosition;
         initialScale = gameObject.GetComponent<RectTransform>().localScale;
+        gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(initialPos.x, initialPos.y - 300);
+        gameObject.GetComponent<RectTransform>().localScale = Vector2.zero;
         gameObject.SetActive(false);
     }
 
@@ -35,14 +37,13 @@ public class GameOverScreen : MonoBehaviour
         targetScale = initialScale;
         gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(initialPos.x, initialPos.y - 300);
         gameObject.GetComponent<RectTransform>().localScale = Vector2.zero;
-        StartCoroutine(ShowGameOverScreenWithDelay(0.3f));
+        StartCoroutine(ShowGameOverScreenWithDelay(delayBeforeShowing));
     }
 
     System.Collections.IEnumerator ShowGameOverScreenWithDelay(float _delay)
     {
         yield return new WaitForSeconds(_delay);
         isMoving = true;
-        previousTime = Time.realtimeSinceStartup;
     }
 
     public void HideGameOverScreen()
@@ -50,23 +51,18 @@ public class GameOverScreen : MonoBehaviour
         targetPos = new Vector2(initialPos.x, initialPos.y - 300);
         targetScale = Vector2.zero;
         isMoving = true;
-        previousTime = Time.realtimeSinceStartup;
     }
 
     private void Update()
     {
         if (isMoving)
         {
-            thisTime = Time.realtimeSinceStartup;
-            float _deltaTime = thisTime - previousTime;
-            previousTime = thisTime;
-
             Vector2 _currentPos = gameObject.GetComponent<RectTransform>().anchoredPosition;
-            Vector2 _newPos = Vector2.Lerp(_currentPos, targetPos, _deltaTime * speedAnimation);
+            Vector2 _newPos = Vector2.Lerp(_currentPos, targetPos, Time.deltaTime * speedAnimation);
             gameObject.GetComponent<RectTransform>().anchoredPosition = _newPos;
 
             Vector2 _currentScale = gameObject.GetComponent<RectTransform>().localScale;
-            Vector2 _newScale = Vector2.Lerp(_currentScale, targetScale, _deltaTime * speedAnimation);
+            Vector2 _newScale = Vector2.Lerp(_currentScale, targetScale, Time.deltaTime * speedAnimation);
             gameObject.GetComponent<RectTransform>().localScale = _newScale;
 
             if (Vector2.Distance(_newPos, targetPos) < 0.1f)
