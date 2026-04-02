@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 175606551
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1995264254628278533, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb3d9927b182794d870f5017bb0f001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  impactParticulesPrefab: {fileID: 1283793732358517792, guid: 871ab1954389b304dbb326b3b8123a13, type: 3}

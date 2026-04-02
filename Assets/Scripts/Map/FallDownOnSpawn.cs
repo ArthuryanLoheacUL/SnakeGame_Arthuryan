@@ -4,6 +4,7 @@ public class FallDownOnSpawn : MonoBehaviour
 {
     private Vector3 targetPos;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject impactParticulesPrefab;
 
     bool isFalling = false;
     float lerpTime = 0f;
@@ -53,6 +54,7 @@ public class FallDownOnSpawn : MonoBehaviour
         {
             shaked = true;
             ShakeCameraManager.instance.ShakeCamera(0.1f, 0.1f, Vector2.down);
+            Instantiate(impactParticulesPrefab, transform.position, Quaternion.Euler(0, 0, 0));
         }
     }
 }
