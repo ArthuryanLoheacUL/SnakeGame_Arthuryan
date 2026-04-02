@@ -164,7 +164,23 @@ public class BodySnake : MonoBehaviour
     public void IncreaseLengthSnake()
     {
         lengthSnake++;
+        StartCoroutine(WaveSnakeBody());
     }
+
+
+    System.Collections.IEnumerator WaveSnakeBody()
+    {
+        int _index = bodyParts.Count - 1;
+        while (_index >= 0)
+        {
+            Vector3 _scale = bodyParts[_index].transform.localScale;
+            bodyParts[_index].transform.localScale = _scale * 1.2f;
+            yield return new WaitForSeconds(0.05f);
+            bodyParts[_index].transform.localScale = _scale;
+            _index--;
+        }
+    }
+
 
     // Check if a given position is occupied by any part of the snake's body (excluding the tail) by iterating through the positions list and comparing each position with the given position
     public bool IsPositionOnSnake(Vector2 _position, bool _includeTail = false)
