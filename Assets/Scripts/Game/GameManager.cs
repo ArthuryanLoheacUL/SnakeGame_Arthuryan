@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -82,6 +83,11 @@ public class GameManager : MonoBehaviour
         ComboMananger.Instance.Reset();
         ScoreManager.instance.ResetScore();
         ScoreManager.instance.SetTargetScore(targetScore);
+        GameObject[] _particules = GameObject.FindGameObjectsWithTag("ParticulesEffect");
+        foreach (GameObject _particule in _particules)
+        {
+            Destroy(_particule);
+        }
     }
 
     // Generate new maps

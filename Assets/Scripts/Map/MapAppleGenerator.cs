@@ -5,6 +5,7 @@ public class MapAppleGenerator : MonoBehaviour
 {
     private GlobalMapData globalMapData;
     public Sprite appleTileSprite;
+    public GameObject appleTilePrefab;
     private List<GameObject> apples;
     private int maxApples = 1;
     public int startApples = 1;
@@ -107,10 +108,10 @@ public class MapAppleGenerator : MonoBehaviour
     // Generate a new apple tile GameObject at the specified position and parent it to the MapAppleGenerator's transform
     void GenerateAppleTile(int _i, int _j, Transform _parent)
     {
-        GameObject _tile = new GameObject($"Apple_{_i}_{_j}");
+        GameObject _tile = Instantiate(appleTilePrefab);
         _tile.transform.position = new Vector2(_i, _j);
         _tile.transform.parent = _parent;
-        SpriteRenderer _renderer = _tile.AddComponent<SpriteRenderer>();
+        SpriteRenderer _renderer = _tile.GetComponent<SpriteRenderer>();
         _renderer.sortingLayerName = "AppleTile";
         _renderer.sprite = appleTileSprite;
         if (_renderer.sprite == null)
@@ -140,6 +141,7 @@ public class MapAppleGenerator : MonoBehaviour
         {
             if (apples[_i].transform.position == new Vector3(_position.x, _position.y, 0))
             {
+                apples[_i].GetComponent<SplashOnDestroy>()?.Splash();
                 Destroy(apples[_i]);
                 apples.RemoveAt(_i);
                 return;
