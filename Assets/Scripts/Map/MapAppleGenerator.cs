@@ -48,7 +48,7 @@ public class MapAppleGenerator : MonoBehaviour
         {
             if (ScoreManager.instance.GetScore() >= nextAppleScore)
             {
-                nextAppleScoreThreshold += 5;
+                nextAppleScoreThreshold += 20;
                 nextAppleScore += nextAppleScoreThreshold;
                 maxApples++;
             }

@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 6528
+  controlID: 12961
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 6529
+  controlID: 12962
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 6530
+  controlID: 13047
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 6531
+  controlID: 12916
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -277,13 +277,14 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -35688
+      - m_Data: -35684
       - m_Data: -1320
       - m_Data: 49172
       - m_Data: 49176
       - m_Data: 49250
       - m_Data: 49284
       - m_Data: 49352
-      - m_Data: 49412
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1016,9 +1017,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 453.08908, y: 429.84396, z: -1.665451}
+    m_Target: {x: 489.64627, y: 298.2238, z: -2.7444391}
     speed: 2
-    m_Value: {x: 453.08908, y: 429.84396, z: -1.665451}
+    m_Value: {x: 489.64627, y: 298.2238, z: -2.7444391}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1068,9 +1069,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 233.20152
+    m_Target: 388.46634
     speed: 2
-    m_Value: 233.20152
+    m_Value: 388.46634
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -2558,7 +2559,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/UI
+    - Assets/Scripts/Game
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -2568,7 +2569,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets/Scripts/UI
+  - Assets/Scripts/Game
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Users\PC_DE_BOUHDA\SnakeGame_Arthuryan
   m_LockTracker:
@@ -2577,9 +2578,9 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 95}
     m_SelectedIDs:
-    - m_Data: 50134
+    - m_Data: 50128
     m_LastClickedID:
-      m_Data: 50134
+      m_Data: 50128
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 50004
@@ -2657,8 +2658,8 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 49176
-    m_LastClickedInstanceID: 49176
+    - m_Data: 49352
+    m_LastClickedInstanceID: 49352
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs:
     - m_Data: 75794
@@ -2808,7 +2809,7 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 49176
+  m_LastInspectedObjectInstanceID: 49352
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
