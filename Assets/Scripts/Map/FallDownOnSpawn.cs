@@ -20,7 +20,8 @@ public class FallDownOnSpawn : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
         shaked = false;
-        GetComponent<ShadowCaster2D>().enabled = false;
+        if (GetComponent<ShadowCaster2D>() != null)
+            GetComponent<ShadowCaster2D>().enabled = false;
         StartCoroutine(WaitAndFall(Random.Range(0, 11) / 100f));
     }
 
@@ -57,7 +58,8 @@ public class FallDownOnSpawn : MonoBehaviour
             shaked = true;
             ShakeCameraManager.instance.ShakeCamera(0.1f, 0.1f, Vector2.down);
             Instantiate(impactParticulesPrefab, transform.position, Quaternion.Euler(0, 0, 0));
-            GetComponent<ShadowCaster2D>().enabled = true;
+            if (GetComponent<ShadowCaster2D>() != null)
+                GetComponent<ShadowCaster2D>().enabled = true;
         }
     }
 }

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7474349067022794998}
   - component: {fileID: 6497629953471470255}
   - component: {fileID: -8877223804468056481}
+  - component: {fileID: -2158577773817575868}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -190,3 +191,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   splashPrefab: {fileID: 6378980758711772915, guid: 951232b5a7ea1cb4abdedf1e9c2f9970, type: 3}
+--- !u!114 &-2158577773817575868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369535034211911585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb3d9927b182794d870f5017bb0f001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FallDownOnSpawn
+  impactParticulesPrefab: {fileID: 1283793732358517792, guid: 871ab1954389b304dbb326b3b8123a13, type: 3}
