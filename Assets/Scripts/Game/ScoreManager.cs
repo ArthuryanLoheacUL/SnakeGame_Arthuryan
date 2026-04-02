@@ -5,22 +5,19 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     private int score = 0;
-    [SerializeField]
-    public TMP_Text scoreText;
+    [SerializeField] private TMP_Text scoreText;
 
-    [SerializeField]
-    private TMP_Text targetScoreText;
+    [SerializeField] private TMP_Text targetScoreText;
     private int targetScore = 100;
     private bool targetScoreReached = false;
 
-    [SerializeField]
-    private TMP_Text highScoreText;
+    [SerializeField] private TMP_Text highScoreText;
     private int highScore = 0;
     private bool highScoreReached = false;
 
-    public AudioClip scoreSoundEffect;
-    public AudioClip targetReached;
-    public AudioClip highScoreSoundEffect;
+    [SerializeField] private AudioClip scoreSoundEffect;
+    [SerializeField] private AudioClip targetReached;
+    [SerializeField] private AudioClip highScoreSoundEffect;
 
     // Awake is called when the script instance is being loaded
     void Awake()

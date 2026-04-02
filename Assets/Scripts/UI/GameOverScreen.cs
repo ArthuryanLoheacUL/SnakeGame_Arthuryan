@@ -3,19 +3,18 @@ using TMPro;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public TextMeshProUGUI gameOverText;
-    public string gameOverMessage = "Game Over!";
-    public string winMessage = "You Win!";
+    [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private string gameOverMessage = "Game Over!";
+    [SerializeField] private string winMessage = "You Win!";
     private Vector2 targetScale;
     private Vector2 targetPos;
     private Vector2 initialPos;
     private Vector2 initialScale;
-    bool isMoving = false;
+    private bool isMoving = false;
 
-    float speedAnimation = 8f;
+    private float speedAnimation = 8f;
 
-    public float delayBeforeShowing = 0.5f;
-
+    [SerializeField] private float delayBeforeShowing = 0.5f;
     [SerializeField] private GameObject confettisPrefab;
 
     void Start()

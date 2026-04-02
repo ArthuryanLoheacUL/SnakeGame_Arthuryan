@@ -10,7 +10,7 @@ public class MusicGameManager : MonoBehaviour
         public float volume;
     }
 
-    public MusicClipInfo musicClipInfo;
+    [SerializeField] private MusicClipInfo musicClipInfo;
 
     // Start is called before the first frame update
     void Start()

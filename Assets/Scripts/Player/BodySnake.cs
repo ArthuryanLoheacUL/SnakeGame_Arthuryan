@@ -54,21 +54,21 @@ public class BodySnake : MonoBehaviour
     private List<Position> positions = new List<Position>();
     private List<GameObject> bodyParts = new List<GameObject>();
 
-    public SnakeSpriteBody bodySprite;
-    public HeadSnake headSprite;
-    public SnakeSprite tailSprite;
+    [SerializeField] private SnakeSpriteBody bodySprite;
+    [SerializeField] private HeadSnake headSprite;
+    [SerializeField] private SnakeSprite tailSprite;
 
     private float headAnimationTimer;
     private int currentHeadFrame;
 
     public enum HeadState { Basic, Eating, Dead }
-    public HeadState currentHeadState = HeadState.Basic;
+    [SerializeField] private HeadState currentHeadState = HeadState.Basic;
 
     private float impactWhiteDuration = 0.0f;
     private Shader shaderGUItext;
     private Shader shaderDefault;
 
-    public GameObject trailSmoke;
+    [SerializeField] private GameObject trailSmoke;
 
     // Reset the snake to its initial state, clearing all body parts and resetting the length and positions
     public void ResetSnake()

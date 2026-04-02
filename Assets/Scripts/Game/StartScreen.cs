@@ -6,12 +6,12 @@ public class StartScreen : MonoBehaviour
     private Vector2 targetScale;
     private Vector2 targetPos;
     private Vector2 initialPos;
-    bool isMoving = false;
+    private bool isMoving = false;
 
-    float speedAnimation = 8f;
+    private float speedAnimation = 8f;
 
-    float previousTime = 0f;
-    float thisTime = 0f;
+    private float previousTime = 0f;
+    private float thisTime = 0f;
 
     void Start()
     {

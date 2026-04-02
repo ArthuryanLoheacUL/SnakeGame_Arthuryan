@@ -4,7 +4,7 @@ using UnityEngine;
 public class MapObstaclesGenerator : MonoBehaviour
 {
     private GlobalMapData globalMapData;
-    public Sprite[] obstaclesTileSprites;
+    [SerializeField] private Sprite[] obstaclesTileSprites;
     [SerializeField] private GameObject obstacleTilePrefab;
     private List<GameObject> mapTilesObstacles;
 

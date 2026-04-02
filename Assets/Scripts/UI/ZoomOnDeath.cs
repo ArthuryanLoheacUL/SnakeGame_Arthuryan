@@ -3,10 +3,8 @@ using UnityEngine;
 public class ZoomOnDeath : MonoBehaviour
 {
     private Vector3 originalPosition;
-
     private Vector3 targetPosition;
-
-    Camera camera;
+    private Camera camera;
 
     public void SetupOriginalPosition()
     {

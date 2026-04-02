@@ -5,16 +5,16 @@ using System.Collections.Generic;
 public class MovementPlayer : MonoBehaviour
 {
     private Vector2 pos;
-    public float timerBetweenMoves = 0.25f;
+    [SerializeField] private float timerBetweenMoves = 0.25f;
     private float timer;
 
     private Vector2 lastDirection = Vector2.right;
     private BodySnake bodySnake;
 
-    GlobalMapData globalMapData;
+    private GlobalMapData globalMapData;
 
-    List<Vector2> inputBuffer = new List<Vector2>();
-    const int MAX_INPUT_BUFFER_SIZE = 4;
+    private List<Vector2> inputBuffer = new List<Vector2>();
+    private const int MAX_INPUT_BUFFER_SIZE = 4;
 
     private SnakeAudio snakeAudio;
 

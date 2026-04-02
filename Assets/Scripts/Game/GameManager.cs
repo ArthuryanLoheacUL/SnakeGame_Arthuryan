@@ -6,24 +6,24 @@ public class GameManager : MonoBehaviour
     static public GameManager instance;
 
     // Reference to the GameObject that contains all the map generation components
-    public GameObject mapGenerator;
+    [SerializeField] private GameObject mapGenerator;
     private GlobalMapData globalMapData;
     private MapObstaclesGenerator mapObstaclesGenerator;
     private MapBackgroundGenerator mapBackgroundGenerator;
     private MapAppleGenerator mapAppleGenerator;
 
-    public GameObject playerPrefab;
+    [SerializeField] private GameObject playerPrefab;
     private GameObject player;
 
-    public GameObject camera;
+    [SerializeField] private GameObject camera;
 
     [HideInInspector]
     public bool isGameOver = false;
-    public GameObject gameOverUI;
-    public int targetScore = 200;
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private int targetScore = 200;
     [Header("Audio Clips")]
-    public SoundEffectManager.SnakeAudioClip gameOverAudioClip;
-    public SoundEffectManager.SnakeAudioClip winAudioClip;
+    [SerializeField] private SoundEffectManager.SnakeAudioClip gameOverAudioClip;
+    [SerializeField] private SoundEffectManager.SnakeAudioClip winAudioClip;
 
     private ZoomOnDeath zoomOnDeath;
 

@@ -4,14 +4,12 @@ public class ComboMananger : MonoBehaviour
 {
     public static ComboMananger Instance { get; private set; }
 
-    int comboCount = 0;
-    float durationSinceLastAppleEatAudio = 0f;
-    const float DURATION_RESET_COMBO = 2f;
+    private int comboCount = 0;
+    private float durationSinceLastAppleEatAudio = 0f;
+    private const float DURATION_RESET_COMBO = 2f;
 
-    [SerializeField]
-    private ScoreText scoreText;
-    [SerializeField]
-    private GameObject comboIndicatorPrefab;
+    [SerializeField] private ScoreText scoreText;
+    [SerializeField] private GameObject comboIndicatorPrefab;
 
     void Awake()
     {

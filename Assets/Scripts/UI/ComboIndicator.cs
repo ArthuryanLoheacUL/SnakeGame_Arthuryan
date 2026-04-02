@@ -4,14 +4,12 @@ using UnityEngine.UI;
 
 public class ComboIndicator : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI comboText;
-    [SerializeField]
-    private GameObject fireEffect;
+    [SerializeField] private TextMeshProUGUI comboText;
+    [SerializeField] private GameObject fireEffect;
     private Vector3 direction;
 
-    float disapearDuration = 1f;
-    const float GRAVITY = 5f;
+    private float disapearDuration = 1f;
+    private const float GRAVITY = 5f;
 
     public void Setup(int _comboCount, float _disapearDuration = 1f)
     {

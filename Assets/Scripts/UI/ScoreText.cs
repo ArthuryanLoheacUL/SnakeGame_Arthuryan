@@ -6,19 +6,17 @@ using UnityEngine.UI;
 public class ScoreText : MonoBehaviour
 {
     private TMP_Text scoreText;
-    [SerializeField]
-    private TMP_Text multiplierText;
+    [SerializeField] private TMP_Text multiplierText;
     private Vector3 originalPosition;
-    [SerializeField]
-    private Slider sliderTimeCombo;
+    [SerializeField] private Slider sliderTimeCombo;
 
-    float durationShake = 0f;
-    float durationMax = 0f;
-    float intensityShake = 0f;
-    bool isCombo = false;
+    private float durationShake = 0f;
+    private float durationMax = 0f;
+    private float intensityShake = 0f;
+    private bool isCombo = false;
 
-    public Color colorSimpleCombo = Color.white;
-    public Color colorChargedCombo = Color.yellow;
+    [SerializeField] private Color colorSimpleCombo = Color.white;
+    [SerializeField] private Color colorChargedCombo = Color.yellow;
 
     private void Start()
     {

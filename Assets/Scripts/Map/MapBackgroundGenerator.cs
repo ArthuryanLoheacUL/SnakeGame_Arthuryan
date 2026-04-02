@@ -5,10 +5,10 @@ public class MapBackgroundGenerator : MonoBehaviour
 {
     private GlobalMapData globalMapData;
 
-    public Sprite[] basicTileSprites;
+    [SerializeField] private Sprite[] basicTileSprites;
     [HideInInspector]
     public List<List<GameObject>> mapTilesBackground;
-    public Material litMaterial;
+    [SerializeField] private Material litMaterial;
 
     // Clear and regenerate the background map with new tile sprites
     public void GenerateNewBackgroundMap()

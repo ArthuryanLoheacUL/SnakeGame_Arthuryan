@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SplashOnDestroy : MonoBehaviour
 {
-    public GameObject splashPrefab;
+    [SerializeField] private GameObject splashPrefab;
 
     public void Splash()
     {

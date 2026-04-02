@@ -7,10 +7,10 @@ public class FallDownOnSpawn : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject impactParticulesPrefab;
 
-    bool isFalling = false;
-    float lerpTime = 0f;
-    float maxLerpTime = 1f;
-    bool shaked = false;
+    private bool isFalling = false;
+    private float lerpTime = 0f;
+    private float maxLerpTime = 1f;
+    private bool shaked = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,10 +42,10 @@ public class FallDownOnSpawn : MonoBehaviour
                 lerpTime = maxLerpTime;
             }
 
-            float _t = lerpTime / maxLerpTime;
-            float _y = Mathf.Pow(_t, 2);
+            float _y = Mathf.Pow(lerpTime / maxLerpTime, 2);
 
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, targetPos.y, _y), transform.position.z);
+            transform.position = new Vector3(transform.position.x,
+                Mathf.Lerp(transform.position.y, targetPos.y, _y), transform.position.z);
             if (spriteRenderer != null)
             {
                 Color _color = spriteRenderer.color;

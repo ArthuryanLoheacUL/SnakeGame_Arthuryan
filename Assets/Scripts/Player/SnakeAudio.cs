@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SnakeAudio : MonoBehaviour
 {
-    public SoundEffectManager.SnakeAudioClip appleEatAudio;
-    public SoundEffectManager.SnakeAudioClip appleEatComboedAudio;
-    public SoundEffectManager.SnakeAudioClip hitWallAudio;
-    public SoundEffectManager.SnakeAudioClip snakeHissAudio;
+    [SerializeField] private SoundEffectManager.SnakeAudioClip appleEatAudio;
+    [SerializeField] private SoundEffectManager.SnakeAudioClip appleEatComboedAudio;
+    [SerializeField] private SoundEffectManager.SnakeAudioClip hitWallAudio;
+    [SerializeField] private SoundEffectManager.SnakeAudioClip snakeHissAudio;
 
     const float PITCH_INCREMENT_EAT_AUDIO = 0.05f;
     const float MIN_PITCH_EAT_AUDIO = 0.8f;
