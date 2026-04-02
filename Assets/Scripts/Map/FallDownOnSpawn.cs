@@ -3,10 +3,10 @@ using UnityEngine.Rendering.Universal;
 
 public class FallDownOnSpawn : MonoBehaviour
 {
-    private Vector3 targetPos;
-    private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject impactParticulesPrefab;
 
+    private Vector3 targetPos;
+    private SpriteRenderer spriteRenderer;
     private bool isFalling = false;
     private float lerpTime = 0f;
     private float maxLerpTime = 1f;

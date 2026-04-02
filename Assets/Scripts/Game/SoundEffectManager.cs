@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
+[System.Serializable]
+public struct SnakeAudioClip
+{
+    public AudioClip clip;
+    [Range(0f, 2f)]
+    public float volume;
+}
+
 public class SoundEffectManager : MonoBehaviour
 {
-    [System.Serializable]
-    public struct SnakeAudioClip
-    {
-        public AudioClip clip;
-        [Range(0f, 2f)]
-        public float volume;
-    }
-
     public static SoundEffectManager instance;
     private AudioSource audioSource;
 

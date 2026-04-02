@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class ScoreText : MonoBehaviour
 {
     private TMP_Text scoreText;
-    [SerializeField] private TMP_Text multiplierText;
     private Vector3 originalPosition;
+    [SerializeField] private TMP_Text multiplierText;
     [SerializeField] private Slider sliderTimeCombo;
 
     private float durationShake = 0f;

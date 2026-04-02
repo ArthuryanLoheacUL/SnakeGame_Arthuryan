@@ -7,10 +7,9 @@ public class PauseScreenAnimation : MonoBehaviour
     private Vector2 targetPos;
     private Vector2 initialPos;
     private Vector2 initialScale;
+
     private bool isMoving = false;
-
     private float speedAnimation = 8f;
-
     private float previousTime = 0f;
     private float thisTime = 0f;
 

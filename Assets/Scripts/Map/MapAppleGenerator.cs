@@ -4,11 +4,13 @@ using UnityEngine;
 public class MapAppleGenerator : MonoBehaviour
 {
     private GlobalMapData globalMapData;
+
     [SerializeField] private Sprite appleTileSprite;
     [SerializeField] private GameObject appleTilePrefab;
     private List<GameObject> apples;
     private int maxApples = 1;
     [SerializeField] private int startApples = 1;
+
     private int nextAppleScoreThreshold = 10;
     private int nextAppleScore = 0;
 

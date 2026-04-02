@@ -6,8 +6,8 @@ public class ComboIndicator : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI comboText;
     [SerializeField] private GameObject fireEffect;
-    private Vector3 direction;
 
+    private Vector3 direction;
     private float disapearDuration = 1f;
     private const float GRAVITY = 5f;
 

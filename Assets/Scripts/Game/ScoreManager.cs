@@ -4,20 +4,21 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    private int score = 0;
+
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private AudioClip scoreSoundEffect;
+    private int score = 0;
 
     [SerializeField] private TMP_Text targetScoreText;
+    [SerializeField] private AudioClip targetReached;
     private int targetScore = 100;
     private bool targetScoreReached = false;
 
     [SerializeField] private TMP_Text highScoreText;
+    [SerializeField] private AudioClip highScoreSoundEffect;
     private int highScore = 0;
     private bool highScoreReached = false;
 
-    [SerializeField] private AudioClip scoreSoundEffect;
-    [SerializeField] private AudioClip targetReached;
-    [SerializeField] private AudioClip highScoreSoundEffect;
 
     // Awake is called when the script instance is being loaded
     void Awake()

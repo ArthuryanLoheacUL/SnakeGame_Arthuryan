@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private int targetScore = 200;
     [Header("Audio Clips")]
-    [SerializeField] private SoundEffectManager.SnakeAudioClip gameOverAudioClip;
-    [SerializeField] private SoundEffectManager.SnakeAudioClip winAudioClip;
+    [SerializeField] private SnakeAudioClip gameOverAudioClip;
+    [SerializeField] private SnakeAudioClip winAudioClip;
 
     private ZoomOnDeath zoomOnDeath;
 

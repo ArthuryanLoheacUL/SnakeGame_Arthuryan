@@ -4,10 +4,8 @@ using System.Collections.Generic;
 public class MapBackgroundGenerator : MonoBehaviour
 {
     private GlobalMapData globalMapData;
-
     [SerializeField] private Sprite[] basicTileSprites;
-    [HideInInspector]
-    public List<List<GameObject>> mapTilesBackground;
+    [HideInInspector] public List<List<GameObject>> mapTilesBackground;
     [SerializeField] private Material litMaterial;
 
     // Clear and regenerate the background map with new tile sprites

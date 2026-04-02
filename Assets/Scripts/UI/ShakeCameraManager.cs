@@ -3,6 +3,7 @@ using UnityEngine;
 public class ShakeCameraManager : MonoBehaviour
 {
     public static ShakeCameraManager instance;
+
     private Camera mainCamera;
     private Vector3 originalCameraPosition;
 

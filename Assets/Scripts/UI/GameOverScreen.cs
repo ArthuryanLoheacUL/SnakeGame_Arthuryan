@@ -6,15 +6,15 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private string gameOverMessage = "Game Over!";
     [SerializeField] private string winMessage = "You Win!";
+
     private Vector2 targetScale;
     private Vector2 targetPos;
     private Vector2 initialPos;
     private Vector2 initialScale;
     private bool isMoving = false;
-
     private float speedAnimation = 8f;
-
     [SerializeField] private float delayBeforeShowing = 0.5f;
+
     [SerializeField] private GameObject confettisPrefab;
 
     void Start()
