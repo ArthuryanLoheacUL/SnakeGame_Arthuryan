@@ -19,7 +19,7 @@ public class ComboIndicator : MonoBehaviour
         disapearDuration = _disapearDuration;
         if (comboText)
         {
-            comboText.text = $"x{_comboCount}";
+            comboText.text = $"+{_comboCount}";
         }
         int _xRand = Random.Range(-30, 31);
         direction = new Vector3(_xRand / 100f, 2, 0);
