@@ -8,6 +8,7 @@ public class MapBackgroundGenerator : MonoBehaviour
     public Sprite[] basicTileSprites;
     [HideInInspector]
     public List<List<GameObject>> mapTilesBackground;
+    public Material litMaterial;
 
     // Clear and regenerate the background map with new tile sprites
     public void GenerateNewBackgroundMap()
@@ -63,6 +64,7 @@ public class MapBackgroundGenerator : MonoBehaviour
         _tile.transform.position = globalMapData.GetTilePosition(_i, _j);
         _tile.transform.parent = _parent;
         SpriteRenderer _renderer = _tile.AddComponent<SpriteRenderer>();
+        _renderer.material = litMaterial;
         _renderer.sortingLayerName = "BackgroundTile";
         _renderer.sprite = GetRandomTileSprite();
         if (_renderer.sprite == null)

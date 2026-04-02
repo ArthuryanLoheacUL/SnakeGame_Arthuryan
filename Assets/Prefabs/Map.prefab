@@ -91,7 +91,7 @@ MonoBehaviour:
   - {fileID: 1515115431280002928, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
   - {fileID: -477816285014773587, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
   - {fileID: 595951266643766092, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
-  mapTilesObstacles: []
+  obstacleTilePrefab: {fileID: 6369535034211911585, guid: 865230a3022775547aee81fd352bac24, type: 3}
 --- !u!114 &4995643942443441935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,4 +106,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   appleTileSprite: {fileID: -1804363338, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
   appleTilePrefab: {fileID: 6369535034211911585, guid: d5cae5e042b61864ebcca052128b987a, type: 3}
-  startApples: 1
+  startApples: 2
