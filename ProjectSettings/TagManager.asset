@@ -58,6 +58,9 @@ TagManager:
   - name: ObstacleTile
     uniqueID: 175606551
     locked: 0
+  - name: BehindUI
+    uniqueID: 1455751581
+    locked: 0
   - name: UI
     uniqueID: 1303850563
     locked: 0

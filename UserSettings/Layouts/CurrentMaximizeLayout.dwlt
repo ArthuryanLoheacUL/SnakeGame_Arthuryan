@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 39845
+  controlID: 62263
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -46,8 +46,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 2113
-    y: 79
+    x: 194
+    y: 24
     width: 1059
     height: 651
   m_SerializedDataModeController:
@@ -96,7 +96,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 39846
+  controlID: 62264
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 39847
+  controlID: 62265
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 39691
+  controlID: 62266
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -277,11 +277,14 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -488002
+      - m_Data: -472844
+      - m_Data: -472810
+      - m_Data: -471808
+      - m_Data: -471774
       - m_Data: -194184
       - m_Data: -1320
-      - m_Data: 49172
       - m_Data: 49284
-      - m_Data: 49352
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1014,9 +1017,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 6.000575, y: 5.8276086, z: 0.9658232}
+    m_Target: {x: -3.7459002, y: 0.56156814, z: -0.18046013}
     speed: 2
-    m_Value: {x: 6.000575, y: 5.8276086, z: 0.9658232}
+    m_Value: {x: -3.7459002, y: 0.56156814, z: -0.18046013}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1066,9 +1069,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 17.440622
+    m_Target: 14.235239
     speed: 2
-    m_Value: 17.440622
+    m_Value: 14.235239
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -2555,7 +2558,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Images
+    - Assets/Prefabs
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -2565,7 +2568,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets/Images
+  - Assets/Prefabs
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Users\PC_DE_BOUHDA\SnakeGame_Arthuryan
   m_LockTracker:
@@ -2574,9 +2577,9 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 95}
     m_SelectedIDs:
-    - m_Data: 50120
+    - m_Data: 50122
     m_LastClickedID:
-      m_Data: 50120
+      m_Data: 50122
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 50004
@@ -2654,8 +2657,8 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 49412
-    m_LastClickedInstanceID: 49412
+    - m_Data: 49186
+    m_LastClickedInstanceID: 49186
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs:
     - m_Data: 75794
@@ -2717,8 +2720,8 @@ MonoBehaviour:
     y: 0
     width: 666
     height: 933
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -2768,7 +2771,7 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 49412
+  m_LastInspectedObjectInstanceID: 49186
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0

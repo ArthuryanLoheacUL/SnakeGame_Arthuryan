@@ -16,6 +16,8 @@ public class GameOverScreen : MonoBehaviour
 
     public float delayBeforeShowing = 0.5f;
 
+    [SerializeField] private GameObject confettisPrefab;
+
     void Start()
     {
         initialPos = gameObject.GetComponent<RectTransform>().anchoredPosition;
@@ -38,13 +40,18 @@ public class GameOverScreen : MonoBehaviour
         targetScale = initialScale;
         gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(initialPos.x, initialPos.y - 300);
         gameObject.GetComponent<RectTransform>().localScale = Vector2.zero;
-        StartCoroutine(ShowGameOverScreenWithDelay(delayBeforeShowing));
+        StartCoroutine(ShowGameOverScreenWithDelay(delayBeforeShowing, _isWin));
     }
 
-    System.Collections.IEnumerator ShowGameOverScreenWithDelay(float _delay)
+    System.Collections.IEnumerator ShowGameOverScreenWithDelay(float _delay, bool _isWin = false)
     {
         yield return new WaitForSeconds(_delay);
         isMoving = true;
+        if (_isWin && confettisPrefab)
+        {
+            GameObject _confetis = Instantiate(confettisPrefab, transform.position, Quaternion.identity, transform.parent);
+            _confetis.GetComponent<RectTransform>().anchoredPosition = targetPos;
+        }
     }
 
     public void HideGameOverScreen()

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447a54404e6ebb24aa7ed8b707f9c185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  mapSize: {x: 10, y: 10}
-  obstacleDensity: 0.1
+  mapSize: {x: 20, y: 16}
+  obstacleDensity: 0.05
 --- !u!114 &4194480229683451603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,4 +105,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   appleTileSprite: {fileID: -1804363338, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
-  maxApples: 3
+  appleTilePrefab: {fileID: 6369535034211911585, guid: d5cae5e042b61864ebcca052128b987a, type: 3}
+  startApples: 1
