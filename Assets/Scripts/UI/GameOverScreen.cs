@@ -28,6 +28,7 @@ public class GameOverScreen : MonoBehaviour
     // Display the Game Over screen
     public void ShowGameOverScreen(bool _isWin)
     {
+        isMoving = false;
         gameObject.SetActive(true);
         targetPos = initialPos;
         if (gameOverText)
