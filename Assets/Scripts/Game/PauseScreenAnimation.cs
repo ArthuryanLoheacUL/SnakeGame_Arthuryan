@@ -1,11 +1,8 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class GameOverScreen : MonoBehaviour
+public class PauseScreenAnimation : MonoBehaviour
 {
-    public TextMeshProUGUI gameOverText;
-    public string gameOverMessage = "Game Over!";
-    public string winMessage = "You Win!";
     private Vector2 targetScale;
     private Vector2 targetPos;
     private Vector2 initialPos;
@@ -13,6 +10,7 @@ public class GameOverScreen : MonoBehaviour
     bool isMoving = false;
 
     float speedAnimation = 8f;
+
     float previousTime = 0f;
     float thisTime = 0f;
 
@@ -23,29 +21,19 @@ public class GameOverScreen : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // Display the Game Over screen
-    public void ShowGameOverScreen(bool _isWin)
+    // Display the pause screen
+    public void ShowPauseScreen()
     {
         gameObject.SetActive(true);
         targetPos = initialPos;
-        if (gameOverText)
-        {
-            gameOverText.text = _isWin ? winMessage : gameOverMessage;
-        }
         targetScale = initialScale;
         gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(initialPos.x, initialPos.y - 300);
         gameObject.GetComponent<RectTransform>().localScale = Vector2.zero;
-        StartCoroutine(ShowGameOverScreenWithDelay(0.3f));
-    }
-
-    System.Collections.IEnumerator ShowGameOverScreenWithDelay(float _delay)
-    {
-        yield return new WaitForSeconds(_delay);
         isMoving = true;
         previousTime = Time.realtimeSinceStartup;
     }
 
-    public void HideGameOverScreen()
+    public void HidePauseScreen()
     {
         targetPos = new Vector2(initialPos.x, initialPos.y - 300);
         targetScale = Vector2.zero;

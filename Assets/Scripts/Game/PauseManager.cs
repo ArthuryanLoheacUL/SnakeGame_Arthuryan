@@ -23,7 +23,7 @@ public class PauseManager : MonoBehaviour
     {
         if (pauseMenuGameobject)
         {
-            pauseMenuGameobject.SetActive(false);
+            pauseMenuGameobject.GetComponent<PauseScreenAnimation>().HidePauseScreen();
         }
     }
 
@@ -33,18 +33,19 @@ public class PauseManager : MonoBehaviour
         if (_settingPause)
         {
             Time.timeScale = 0;
+            pauseMenuGameobject.GetComponent<PauseScreenAnimation>().ShowPauseScreen();
         }
         else
         {
             Time.timeScale = 1;
+            pauseMenuGameobject.GetComponent<PauseScreenAnimation>().HidePauseScreen();
         }
-        pauseMenuGameobject.SetActive(_settingPause);
     }
 
     public void Resume()
     {
         Time.timeScale = 1;
-        pauseMenuGameobject.SetActive(false);
+        pauseMenuGameobject.GetComponent<PauseScreenAnimation>().HidePauseScreen();
     }
 
     void Update()

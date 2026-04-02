@@ -58,7 +58,13 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = false;
         if (gameOverUI != null)
-            gameOverUI.SetActive(false);
+        {
+            GameOverScreen _gameOverScreen = gameOverUI.GetComponent<GameOverScreen>();
+            if (_gameOverScreen != null)
+            {
+                _gameOverScreen.HideGameOverScreen();
+            }
+        }
         GenerateMaps();
         if (player != null)
         {
@@ -145,7 +151,6 @@ public class GameManager : MonoBehaviour
             {
                 _gameOverScreen.ShowGameOverScreen(_isWin);
             }
-            gameOverUI.SetActive(true);
         }
         if (!_isWin)
             SoundEffectManager.instance.PlayAudioSourceSetPitch(gameOverAudioClip);
