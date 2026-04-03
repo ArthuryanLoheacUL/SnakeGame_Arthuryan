@@ -173,7 +173,7 @@ public class MovementPlayer : MonoBehaviour
     {
         if (bodySnake != null)
         {
-            return !bodySnake.IsPositionOnSnake(_position, true);
+            return !bodySnake.IsPositionOnSnake(_position, false);
         }
         return true;
     }

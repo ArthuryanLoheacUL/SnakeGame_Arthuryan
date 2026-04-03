@@ -96,7 +96,7 @@ public class MapAppleGenerator : MonoBehaviour
                 }
 
                 Vector2 _position = globalMapData.GetTilePosition(_i, _j);
-                bool _isOnSnake = _bodySnake != null && _bodySnake.IsPositionOnSnake(_position);
+                bool _isOnSnake = _bodySnake != null && _bodySnake.IsPositionOnSnake(_position, true);
                 if (!IsAppleTileAtPosition(_position) && !globalMapData.IsObstacleTileAtPosition(_position) && !_isOnSnake)
                 {
                     _availablePositions.Add(_position);
