@@ -4,6 +4,6 @@ public class LoadLevel : MonoBehaviour
 {
     public void LoadScene(string _sceneName)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(_sceneName);
+        LevelLoader.instance.LoadLevel(_sceneName);
     }
 }
