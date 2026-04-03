@@ -83,7 +83,7 @@ public class MapObstaclesGenerator : MonoBehaviour
     void GenerateObstacleTile(int _i, int _j, Transform _parent)
     {
         GameObject _tile = Instantiate(obstacleTilePrefab, new Vector3(_i, _j, 0), Quaternion.identity, _parent);
-        SpriteRenderer _renderer = _tile.GetComponent<SpriteRenderer>();
+        SpriteRenderer _renderer = _tile.GetComponent<ExternRender>().spriteRenderer;
         _renderer.sortingLayerName = "ObstacleTile";
         _renderer.sprite = GetRandomTileSprite();
         if (_renderer.sprite == null)

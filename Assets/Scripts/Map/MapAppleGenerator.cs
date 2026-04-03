@@ -113,7 +113,7 @@ public class MapAppleGenerator : MonoBehaviour
         GameObject _tile = Instantiate(appleTilePrefab);
         _tile.transform.position = new Vector2(_i, _j);
         _tile.transform.parent = _parent;
-        SpriteRenderer _renderer = _tile.GetComponent<SpriteRenderer>();
+        SpriteRenderer _renderer = _tile.GetComponent<ExternRender>().spriteRenderer;
         _renderer.sortingLayerName = "AppleTile";
         _renderer.sprite = appleTileSprite;
         if (_renderer.sprite == null)

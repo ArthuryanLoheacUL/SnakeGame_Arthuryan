@@ -187,9 +187,18 @@ public class BodySnake : MonoBehaviour
     {
         foreach (Position _pos in positions)
         {
-            if (_pos.position == _position && (_pos.position != positions[0].position || _includeTail))
+            if (_includeTail)
             {
-                return true;
+                if (_pos.position == _position)
+                {
+                    return true;
+                }
+            } else
+            {
+                if (_pos.position == _position && _pos.position != positions[0].position)
+                {
+                    return true;
+                }
             }
         }
         return false;

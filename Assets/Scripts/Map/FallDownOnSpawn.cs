@@ -11,17 +11,21 @@ public class FallDownOnSpawn : MonoBehaviour
     private float lerpTime = 0f;
     private float maxLerpTime = 1f;
     private bool shaked = false;
+    [SerializeField] private GameObject objectFalling;
+    [SerializeField] private Light2D light2D;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        targetPos = transform.position;
-        transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        targetPos = objectFalling.transform.position;
+        objectFalling.transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+        spriteRenderer = GetComponent<ExternRender>().spriteRenderer;
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0);
         shaked = false;
         if (GetComponent<ShadowCaster2D>() != null)
             GetComponent<ShadowCaster2D>().enabled = false;
+        if (light2D != null)
+            light2D.enabled = false;
         StartCoroutine(WaitAndFall(Random.Range(0, 11) / 100f));
     }
 
@@ -34,7 +38,7 @@ public class FallDownOnSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > targetPos.y && isFalling)
+        if (objectFalling.transform.position.y > targetPos.y && isFalling)
         {
             lerpTime += Time.deltaTime * 2;
             if (lerpTime > maxLerpTime)
@@ -44,8 +48,8 @@ public class FallDownOnSpawn : MonoBehaviour
 
             float _y = Mathf.Pow(lerpTime / maxLerpTime, 2);
 
-            transform.position = new Vector3(transform.position.x,
-                Mathf.Lerp(transform.position.y, targetPos.y, _y), transform.position.z);
+            objectFalling.transform.position = new Vector3(objectFalling.transform.position.x,
+                Mathf.Lerp(objectFalling.transform.position.y, targetPos.y, _y), objectFalling.transform.position.z);
             if (spriteRenderer != null)
             {
                 Color _color = spriteRenderer.color;
@@ -53,13 +57,15 @@ public class FallDownOnSpawn : MonoBehaviour
                 spriteRenderer.color = _color;
             }
         }
-        if (!shaked && isFalling && Vector2.Distance(transform.position, targetPos) < 0.1f)
+        if (!shaked && isFalling && Vector2.Distance(objectFalling.transform.position, targetPos) < 0.1f)
         {
             shaked = true;
             ShakeCameraManager.instance.ShakeCamera(0.1f, 0.1f, Vector2.down);
             Instantiate(impactParticulesPrefab, transform.position, Quaternion.Euler(0, 0, 0));
             if (GetComponent<ShadowCaster2D>() != null)
                 GetComponent<ShadowCaster2D>().enabled = true;
+            if (light2D != null)
+                light2D.enabled = true;
         }
     }
 }
