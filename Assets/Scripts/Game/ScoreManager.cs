@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour
@@ -26,7 +27,6 @@ public class ScoreManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -37,9 +37,9 @@ public class ScoreManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (PlayerPrefs.HasKey("highscore"))
+        if (PlayerPrefs.HasKey("highscore" + SceneManager.GetActiveScene().buildIndex.ToString()))
         {
-            SetHighScore(PlayerPrefs.GetInt("highscore"));
+            SetHighScore(PlayerPrefs.GetInt("highscore" + SceneManager.GetActiveScene().buildIndex.ToString()));
         } else
         {
             SetHighScore(0);
@@ -60,7 +60,7 @@ public class ScoreManager : MonoBehaviour
         }
         if (score > highScore)
         {
-            PlayerPrefs.SetInt("highscore", score);
+            PlayerPrefs.SetInt("highscore" + SceneManager.GetActiveScene().buildIndex.ToString(), score);
             SetHighScore(score);
             if (!highScoreReached)
             {
