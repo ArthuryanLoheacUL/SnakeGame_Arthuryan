@@ -5,7 +5,6 @@ public class MapAppleGenerator : MonoBehaviour
 {
     private GlobalMapData globalMapData;
 
-    [SerializeField] private Sprite appleTileSprite;
     [SerializeField] private GameObject appleTilePrefab;
     private List<GameObject> apples;
     private int maxApples = 1;
@@ -113,13 +112,6 @@ public class MapAppleGenerator : MonoBehaviour
         GameObject _tile = Instantiate(appleTilePrefab);
         _tile.transform.position = new Vector2(_i, _j);
         _tile.transform.parent = _parent;
-        SpriteRenderer _renderer = _tile.GetComponent<ExternRender>().spriteRenderer;
-        _renderer.sortingLayerName = "AppleTile";
-        _renderer.sprite = appleTileSprite;
-        if (_renderer.sprite == null)
-        {
-            Debug.LogError($"Failed to assign a sprite to tile at position ({_i}, {_j}). Check the basicTileSprites array.");
-        }
         apples.Add(_tile);
     }
 
