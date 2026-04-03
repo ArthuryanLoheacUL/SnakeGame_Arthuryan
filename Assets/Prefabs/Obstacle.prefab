@@ -193,6 +193,7 @@ MonoBehaviour:
   impactParticulesPrefab: {fileID: 1283793732358517792, guid: 871ab1954389b304dbb326b3b8123a13, type: 3}
   objectFalling: {fileID: 3342831083021276319}
   light2D: {fileID: 0}
+  impactAudio: {fileID: 8300000, guid: 9fbbb05e184bb9148a24b171b31759b7, type: 3}
 --- !u!114 &7902861608567837704
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: splashPrefab
       value: 
       objectReference: {fileID: 7274150272567847840, guid: 10015b67490638f4093636b0184b2e37, type: 3}
+    - target: {fileID: -2158577773817575868, guid: d5cae5e042b61864ebcca052128b987a, type: 3}
+      propertyPath: impactAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fbbb05e184bb9148a24b171b31759b7, type: 3}
     - target: {fileID: 5090018436514988435, guid: d5cae5e042b61864ebcca052128b987a, type: 3}
       propertyPath: m_Color.g
       value: 1

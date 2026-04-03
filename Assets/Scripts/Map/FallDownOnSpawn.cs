@@ -13,6 +13,7 @@ public class FallDownOnSpawn : MonoBehaviour
     private bool shaked = false;
     [SerializeField] private GameObject objectFalling;
     [SerializeField] private Light2D light2D;
+    [SerializeField] private AudioClip impactAudio;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -66,6 +67,8 @@ public class FallDownOnSpawn : MonoBehaviour
                 GetComponent<ShadowCaster2D>().enabled = true;
             if (light2D != null)
                 light2D.enabled = true;
+            if (impactAudio != null && SoundEffectManager.instance != null)
+                SoundEffectManager.instance.PlayAudioSourceRandomPitched(impactAudio, 0.25f, 0.1f, 1);
         }
-    }
+    }   
 }
