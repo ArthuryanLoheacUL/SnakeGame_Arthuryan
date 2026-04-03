@@ -438,7 +438,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.735849, g: 0.6590289, b: 0.496351, a: 1}
+  m_Color: {r: 0.45874867, g: 0.5754717, b: 0.4653662, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11076,9 +11076,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2093475228}
     - target: {fileID: 3392251210352745175, guid: f50c7341173d36c478f1ad3d62e5ef1c, type: 3}
+      propertyPath: targetScore
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392251210352745175, guid: f50c7341173d36c478f1ad3d62e5ef1c, type: 3}
       propertyPath: mapGenerator
       value: 
       objectReference: {fileID: 297031949}
+    - target: {fileID: 3392251210352745175, guid: f50c7341173d36c478f1ad3d62e5ef1c, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 7998620009979726017, guid: 37bd3df861371284399cc8a43c5b26a3, type: 3}
     - target: {fileID: 5007098875969172031, guid: f50c7341173d36c478f1ad3d62e5ef1c, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -11100,6 +11108,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: basicTileSprites.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3609326179534770920, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: -3276632421060566797, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1809006994876765047, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: -1184147994697837038, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[4]'
+      value: 
+      objectReference: {fileID: -1184147994697837038, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: -1184147994697837038, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: -1184147994697837038, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: 1809006994876765047, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4995643942443441935, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: appleTileSprite
+      value: 
+      objectReference: {fileID: -1117906770, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
     - target: {fileID: 7967013384391888994, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
       propertyPath: mapSize.x
       value: 10
