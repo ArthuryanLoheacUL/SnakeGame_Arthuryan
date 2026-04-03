@@ -39,11 +39,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
         if (mapGenerator == null)
         {
             Debug.LogError("Map Generator GameObject is not assigned. Please assign a GameObject with MapObstaclesGenerator and MapBackgroundGenerator components.");
@@ -54,6 +49,11 @@ public class GameManager : MonoBehaviour
         mapAppleGenerator = mapGenerator.GetComponent<MapAppleGenerator>();
         globalMapData = mapGenerator.GetComponent<GlobalMapData>();
         zoomOnDeath = camera.GetComponent<ZoomOnDeath>();
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
         RestartGame();
     }
 
@@ -89,7 +89,8 @@ public class GameManager : MonoBehaviour
                 zoomOnDeath.ResetZoom();
             }
         }
-        ComboMananger.Instance.Reset();
+        if (ComboMananger.Instance != null)
+            ComboMananger.Instance.Reset();
         ScoreManager.instance.ResetScore();
         ScoreManager.instance.SetTargetScore(targetScore);
         GameObject[] _particules = GameObject.FindGameObjectsWithTag("ParticulesEffect");

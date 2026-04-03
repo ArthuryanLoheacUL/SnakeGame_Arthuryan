@@ -16,6 +16,7 @@ public class ComboMananger : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -26,7 +27,8 @@ public class ComboMananger : MonoBehaviour
     {
         comboCount = 0;
         durationSinceLastAppleEatAudio = 0f;
-        scoreText.Reset();
+        if (scoreText != null)
+            scoreText.Reset();
     }
 
     // Update is called once per frame

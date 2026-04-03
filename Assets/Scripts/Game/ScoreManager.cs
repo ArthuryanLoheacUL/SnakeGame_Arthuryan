@@ -43,6 +43,7 @@ public class ScoreManager : MonoBehaviour
         } else
         {
             SetHighScore(0);
+            highScoreReached = true;
         }
         ResetScore();
     }
@@ -80,7 +81,7 @@ public class ScoreManager : MonoBehaviour
     {
         SetScore(0);
         targetScoreReached = false;
-        highScoreReached = false;
+        highScoreReached = highScore <= 0;
     }
 
     // Set the target score and update the target score text

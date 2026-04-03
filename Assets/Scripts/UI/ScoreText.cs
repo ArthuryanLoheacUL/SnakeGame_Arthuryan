@@ -18,7 +18,7 @@ public class ScoreText : MonoBehaviour
     [SerializeField] private Color colorSimpleCombo = Color.white;
     [SerializeField] private Color colorChargedCombo = Color.yellow;
 
-    private void Start()
+    private void Awake()
     {
         scoreText = GetComponent<TMP_Text>();
         originalPosition = scoreText.transform.localPosition;

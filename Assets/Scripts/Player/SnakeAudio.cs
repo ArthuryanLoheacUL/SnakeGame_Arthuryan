@@ -20,6 +20,7 @@ public class SnakeAudio : MonoBehaviour
             _pitch += (_comboCount - 1) * PITCH_INCREMENT_EAT_AUDIO;
         }
 
+        Debug.Log("Playing apple eat sound with pitch: " + _pitch);
         SoundEffectManager.instance.PlayAudioSourceSetPitch(appleEatAudio, _pitch);
         if (ComboMananger.Instance != null && ComboMananger.Instance.GetComboCount() >= 5)
         {

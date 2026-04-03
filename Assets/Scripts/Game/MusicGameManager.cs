@@ -15,6 +15,9 @@ public class MusicGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MusicManager.instance.PlayMusic(musicClipInfo.clip, musicClipInfo.volume);
+        if (musicClipInfo.clip != null)
+        {
+            MusicManager.instance.PlayMusic(musicClipInfo.clip, musicClipInfo.volume);
+        }
     }
 }
