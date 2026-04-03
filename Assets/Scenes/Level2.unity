@@ -11187,6 +11187,10 @@ PrefabInstance:
       propertyPath: mapGenerator
       value: 
       objectReference: {fileID: 297031949}
+    - target: {fileID: 3392251210352745175, guid: f50c7341173d36c478f1ad3d62e5ef1c, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 1499621289545985578, guid: c8f522ca3e4cfab4db2027620dd78fe3, type: 3}
     - target: {fileID: 5007098875969172031, guid: f50c7341173d36c478f1ad3d62e5ef1c, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -11208,6 +11212,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: basicTileSprites.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: -762756294, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: -1482740930, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: -1601480085, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: -1085764656, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[4]'
+      value: 
+      objectReference: {fileID: -1085764656, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: -1085764656, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4194480229683451603, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'basicTileSprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: -1085764656, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
     - target: {fileID: 9075272387865277068, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
