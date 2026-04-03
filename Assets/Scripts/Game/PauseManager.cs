@@ -4,6 +4,7 @@ public class PauseManager : MonoBehaviour
 {
     public static PauseManager Instance { get; private set; }
     [SerializeField] private GameObject pauseMenuGameobject;
+    bool isPaused = false;
 
     private void Awake()
     {
@@ -35,20 +36,25 @@ public class PauseManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1;
-            pauseMenuGameobject.GetComponent<PauseScreenAnimation>().HidePauseScreen();
+            Resume();
         }
+        isPaused = _settingPause;
     }
 
     public void Resume()
     {
         Time.timeScale = 1;
         pauseMenuGameobject.GetComponent<PauseScreenAnimation>().HidePauseScreen();
+        isPaused = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isPaused && Input.GetKeyDown(KeyCode.Escape))
+        {
+            Resume();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.instance.isGameOver && (Time.timeScale > 0 && !isPaused))
         {
             TogglePause();
         }
