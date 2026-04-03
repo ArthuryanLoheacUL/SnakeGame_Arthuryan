@@ -69,7 +69,12 @@ public class GameOverScreen : MonoBehaviour
             gameObject.GetComponent<RectTransform>().anchoredPosition = _newPos;
 
             Vector2 _currentScale = gameObject.GetComponent<RectTransform>().localScale;
-            Vector2 _newScale = Vector2.Lerp(_currentScale, targetScale, Time.deltaTime * speedAnimation);
+            Vector2 _scaleSpeed = _currentScale.y < targetScale.y ?
+                new Vector2(speedAnimation, speedAnimation * 2) : new Vector2(speedAnimation * 2, speedAnimation);
+            Vector2 _newScale = new Vector2(
+                Mathf.Lerp(_currentScale.x, targetScale.x, Time.deltaTime * _scaleSpeed.x),
+                Mathf.Lerp(_currentScale.y, targetScale.y, Time.deltaTime * _scaleSpeed.y)
+            );
             gameObject.GetComponent<RectTransform>().localScale = _newScale;
 
             if (Vector2.Distance(_newPos, targetPos) < 0.1f)

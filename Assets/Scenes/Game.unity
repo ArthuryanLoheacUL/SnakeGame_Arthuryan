@@ -11196,18 +11196,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
-    - target: {fileID: 4995643942443441935, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
-      propertyPath: startApples
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7967013384391888994, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
-      propertyPath: mapSize.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7967013384391888994, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
-      propertyPath: mapSize.y
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 9075272387865277068, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
