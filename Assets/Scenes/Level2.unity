@@ -438,7 +438,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.735849, g: 0.6590289, b: 0.496351, a: 1}
+  m_Color: {r: 0.4515397, g: 0.50446016, b: 0.6886792, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11244,6 +11244,66 @@ PrefabInstance:
       propertyPath: 'basicTileSprites.Array.data[6]'
       value: 
       objectReference: {fileID: -1085764656, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: obstaclesTileSprites.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 842453648, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: -1192565315, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: -1468842733, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: -636340516, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[4]'
+      value: 
+      objectReference: {fileID: 818092068, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1015474809, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1760337597, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: -399290537, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[8]'
+      value: 
+      objectReference: {fileID: -1376235418, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[9]'
+      value: 
+      objectReference: {fileID: 2021831401, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[10]'
+      value: 
+      objectReference: {fileID: 1753804196, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4717455619173067176, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: 'obstaclesTileSprites.Array.data[11]'
+      value: 
+      objectReference: {fileID: -252257146, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
+    - target: {fileID: 4995643942443441935, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: appleTilePrefab
+      value: 
+      objectReference: {fileID: 503852997833013272, guid: 92517204abca10c48b109b6ed79692df, type: 3}
+    - target: {fileID: 4995643942443441935, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
+      propertyPath: appleTileSprite
+      value: 
+      objectReference: {fileID: 1706065358, guid: db806ec2382fc5049b18a8ed210d221c, type: 3}
     - target: {fileID: 9075272387865277068, guid: 393c6311f96debc4f8fcd381ef36931e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
