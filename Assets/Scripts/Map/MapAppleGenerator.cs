@@ -97,13 +97,32 @@ public class MapAppleGenerator : MonoBehaviour
 
                 Vector2 _position = globalMapData.GetTilePosition(_i, _j);
                 bool _isOnSnake = _bodySnake != null && _bodySnake.IsPositionOnSnake(_position, true);
-                if (!IsAppleTileAtPosition(_position) && !globalMapData.IsObstacleTileAtPosition(_position) && !_isOnSnake)
+                if (!IsAppleTileAtPosition(_position) && !globalMapData.IsObstacleTileAtPosition(_position) && !_isOnSnake
+                    && !IsInCorner(_position))
                 {
                     _availablePositions.Add(_position);
                 }
             }
         }
         return _availablePositions;
+    }
+
+    bool IsInCorner(Vector2 _position)
+    {
+        int _numberBorderTiles = 0;
+        if (_position.x == 0 || _position.x == globalMapData.mapSize.x - 1)
+            _numberBorderTiles++;
+        if (_position.y == 0 || _position.y == globalMapData.mapSize.y - 1)
+            _numberBorderTiles++;
+        if (globalMapData.IsObstacleTileAtPosition(_position + Vector2.up))
+            _numberBorderTiles++;
+        if (globalMapData.IsObstacleTileAtPosition(_position + Vector2.down))
+            _numberBorderTiles++;
+        if (globalMapData.IsObstacleTileAtPosition(_position + Vector2.left))
+            _numberBorderTiles++;
+        if (globalMapData.IsObstacleTileAtPosition(_position + Vector2.right))
+            _numberBorderTiles++;
+        return _numberBorderTiles >= 3;
     }
 
     // Generate a new apple tile GameObject at the specified position and parent it to the MapAppleGenerator's transform

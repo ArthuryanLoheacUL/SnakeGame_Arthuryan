@@ -64,6 +64,10 @@ public class GlobalMapData : MonoBehaviour
 
     public bool IsObstacleTileAtPosition(Vector2 _position)
     {
+        if (_position.x < 0 || _position.x >= mapSize.x || _position.y < 0 || _position.y >= mapSize.y)
+        {
+            return false;
+        }
         if (mapObstaclesGenerator != null)
         {
             return mapObstaclesGenerator.IsObstacleTileAtPosition(_position);

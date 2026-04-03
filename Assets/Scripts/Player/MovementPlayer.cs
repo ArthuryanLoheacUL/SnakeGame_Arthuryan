@@ -133,7 +133,7 @@ public class MovementPlayer : MonoBehaviour
         }
         StartCoroutine(FreezeFrame(0.1f));
         int _maxCombo = ComboMananger.Instance != null ? Mathf.Min(ComboMananger.Instance.GetComboCount(), 5) : 0;
-        ShakeCameraManager.instance.ShakeCamera(0.1f, _maxCombo * 0.025f, new Vector2(1, 1));
+        ShakeCameraManager.instance.ShakeCamera(0.1f, 0.05f + _maxCombo * 0.01f, new Vector2(1, 1));
     }
 
     System.Collections.IEnumerator FreezeFrame(float _duration)
